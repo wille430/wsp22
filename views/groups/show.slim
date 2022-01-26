@@ -1,0 +1,12 @@
+section 
+    h3 Messages 
+    ul
+        - messages.each do |message|
+            li.message
+                span #{message["username"]}
+                span #{message["message"]}
+section 
+    form action="/messages" method="post" 
+        input type="text" name="message" placeholder="Send a message..."
+        input type="hidden" name="group_id" value="#{group["id"]}"
+        input type="submit" value="Send"

@@ -1,4 +1,12 @@
 section 
+    h3 My Groups
+    - my_groups.each do |group|
+        div
+            span #{group["name"]}
+            a href="/groups/#{group["id"]}" Chat 
+section 
     h3 Groups
     - groups.each do |group|
-        span #{group["name"]}
+        div
+            span #{group["name"]}
+            a href="/groups/#{group["id"]}" Chat 

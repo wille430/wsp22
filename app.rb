@@ -30,7 +30,9 @@ get("/") do
                         INNER JOIN chat_groups ON (groups_users.group_id = chat_groups.id)
                       ")
 
-  slim(:"groups/index", locals: { groups: groups })
+  my_groups = db.execute("SELECT * FROM chat_groups WHERE creator = ?", user_id)
+
+  slim(:"groups/index", locals: { groups: groups, my_groups: my_groups })
 end
 
 get("/login") do
@@ -101,7 +103,7 @@ post("/users/new") do
   redirect("/")
 end
 
-post("groups/new") do
+post("/groups") do
   group_name = params[:name]
   user_id = session[:user_id]
 
@@ -111,4 +113,60 @@ post("groups/new") do
   db.execute("INSERT INTO chat_groups (name, creator) VALUES (?, ?)", group_name, user_id)
 
   redirect("/")
+end
+
+get("/groups/new") do
+  slim(:"groups/new")
+end
+
+get("/groups/{group_id}") do
+  validate_user()
+
+  group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  db = SQLite3::Database.new("db/database.db")
+  db.results_as_hash = true
+
+  # check if user is a member of group
+  group_user = db.execute("SELECT
+              1
+              FROM groups_users
+              WHERE user_id = ?
+              AND group_id = ?", user_id, group_id)
+
+  if (!group_user)
+    # show error message: unauthorized
+    return "You are not a member of the group"
+  end
+
+  # get messages from group with sender username
+  messages = db.execute("SELECT 
+                          messages.id,
+                          users.username,
+                          messages.message
+                        FROM messages
+                        LEFT JOIN users
+                        ON messages.user_id = users.id
+                        WHERE group_id = ?
+                        ", group_id)
+
+  group = db.execute("SELECT * FROM chat_groups WHERE id = ?", group_id).first
+
+  slim(:"groups/show", locals: { group: group, messages: messages })
+end
+
+post("/messages") do
+  validate_user()
+
+  group_id = params[:group_id]
+  message = params[:message]
+  user_id = session[:user_id]
+
+  db = SQLite3::Database.new("db/database.db")
+
+  # create message
+  db.execute("INSERT INTO messages (message, group_id, user_id) VALUES (?, ?, ?)", message, group_id, user_id)
+
+  redirect("/groups/#{group_id}")
 end
