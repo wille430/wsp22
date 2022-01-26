@@ -5,8 +5,32 @@ require "bcrypt"
 
 enable :sessions
 
+def validate_user()
+  user_id = session[:user_id]
+
+  if !user_id
+    redirect("/login")
+  end
+end
+
 get("/") do
-  return "test"
+  validate_user()
+
+  db = SQLite3::Database.new("db/database.db")
+  db.results_as_hash = true
+
+  user_id = session[:user_id]
+
+  # get groups where user is a member of
+  groups = db.execute("SELECT 
+                        groups_users.group_id,
+                        chat_groups.name
+                      FROM
+                        groups_users
+                        INNER JOIN chat_groups ON (groups_users.group_id = chat_groups.id)
+                      ")
+
+  slim(:"groups/index", locals: { groups: groups })
 end
 
 get("/login") do
@@ -73,6 +97,18 @@ post("/users/new") do
 
   # save user_id in session
   session[:user_id] = user_id
+
+  redirect("/")
+end
+
+post("groups/new") do
+  group_name = params[:name]
+  user_id = session[:user_id]
+
+  db = SQLite3::Database.new("db/database.db")
+
+  # create group
+  db.execute("INSERT INTO chat_groups (name, creator) VALUES (?, ?)", group_name, user_id)
 
   redirect("/")
 end
