@@ -1,0 +1,16 @@
+
+.members-nav {
+    grid-area: memnav;
+    /* TODO */
+}
+
+.chat-input {
+    width: 100%;
+    /* TODO */
+}
+
+.groups-nav {
+    grid-area: grpnav;
+    background-color: red;
+    /* TODO */
+}
