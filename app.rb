@@ -13,26 +13,47 @@ def validate_user()
   end
 end
 
-get("/") do
-  validate_user()
-
+def get_groups(user_id)
   db = SQLite3::Database.new("db/database.db")
   db.results_as_hash = true
 
-  user_id = session[:user_id]
-
   # get groups where user is a member of
   groups = db.execute("SELECT 
-                        groups_users.group_id,
-                        chat_groups.name
+                        *
                       FROM
-                        groups_users
-                        INNER JOIN chat_groups ON (groups_users.group_id = chat_groups.id)
+                        chat_groups
+                      INNER JOIN groups_users
+                      ON (chat_groups.id = groups_users.group_id)
                       ")
 
-  my_groups = db.execute("SELECT * FROM chat_groups WHERE creator = ?", user_id)
+  return groups
+end
 
-  slim(:"groups/index", locals: { groups: groups, my_groups: my_groups })
+def get_members_of_group(group_id)
+  db = SQLite3::Database.new("db/database.db")
+  db.results_as_hash = true
+
+  # get groups where user is a member of
+  members = db.execute("SELECT 
+                        users.username
+                      FROM
+                        users
+                      LEFT JOIN groups_users
+                      ON groups_users.user_id = users.id
+                      WHERE groups_users.group_id = ?
+                      ", group_id)
+
+  print(members)
+  return members
+end
+
+get("/") do
+  validate_user()
+
+  user_id = session[:user_id]
+  groups = get_groups(user_id)
+
+  slim(:"groups/index", locals: { groups: groups })
 end
 
 get("/login") do
@@ -57,6 +78,8 @@ post("/login") do
       # login user
       session[:user_id] = user["id"]
       redirect("/")
+    else
+      return "Invalid password or username"
     end
   else
     # show error message: invalid username
@@ -108,9 +131,17 @@ post("/groups") do
   user_id = session[:user_id]
 
   db = SQLite3::Database.new("db/database.db")
+  db.results_as_hash = true
 
   # create group
   db.execute("INSERT INTO chat_groups (name, creator) VALUES (?, ?)", group_name, user_id)
+  group_id = db.last_insert_row_id
+
+  puts "GROUP:"
+  puts group_id
+
+  # add users to the group
+  db.execute("INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)", user_id, group_id)
 
   redirect("/")
 end
@@ -124,6 +155,8 @@ get("/groups/{group_id}") do
 
   group_id = params[:group_id]
   user_id = session[:user_id]
+
+  groups = get_groups(user_id)
 
   db = SQLite3::Database.new("db/database.db")
   db.results_as_hash = true
@@ -151,9 +184,11 @@ get("/groups/{group_id}") do
                         WHERE group_id = ?
                         ", group_id)
 
+    members = get_members_of_group(group_id)
+
   group = db.execute("SELECT * FROM chat_groups WHERE id = ?", group_id).first
 
-  slim(:"groups/show", locals: { group: group, messages: messages })
+  slim(:"groups/show", locals: { group: group, messages: messages, groups: groups, members: members })
 end
 
 post("/messages") do

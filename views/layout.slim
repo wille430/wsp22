@@ -5,16 +5,14 @@ html lang="en"
         meta name="viewport" content="width=device-width, initial-scale=1.0"/
         title Discord
 
-        link rel="stylesheet" href="style.css"/
-    body 
-        h1 user_id: #{session[:user_id] || "Not logged in"}
-        nav.groups-nav 
-            ul 
-                li 
-                    span group#1
-                - if session[:user_id]
-                    li
-                        a href="/" Groups 
-                    li 
-                        a href="/groups/new" Create Group  
+        link rel="stylesheet" href="/css/style.css"/
+    body
+        / h1 user_id: #{session[:user_id] || "Not logged in"}
+        / nav
+        /     ul 
+        /         - if session[:user_id]
+        /             li
+        /                 a href="/" Groups 
+        /             li 
+        /                 a href="/groups/new" Create Group  
         == yield

@@ -1,16 +1,139 @@
+:root {
+  --primary-light: rgb(142, 184, 240);
+  --primary: rgb(85, 140, 212);
+  --primary-dark: rgb(42, 95, 165);
+
+  --border-radius: 0.25rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.layout {
+  display: grid;
+  grid-template:
+    "gpnv main mbnv" 100vh
+    / 12rem 1fr 12rem;
+}
+
+main {
+  grid-area: main;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-light);
+}
+
+.group-header {
+  grid-area: head;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
 
 .members-nav {
-    grid-area: memnav;
-    /* TODO */
+  grid-area: mbnv;
+  padding: 0.5rem;
+  background-color: var(--primary);
+}
+
+.group-chat-section {
+  display: grid;
+  grid-template:
+    "head" 3rem
+    "chat" 1fr
+    "ctin" 3rem
+    / 100%;
+  height: 100%;
+}
+
+.chat {
+  grid-area: chat;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: scroll;
 }
 
 .chat-input {
-    width: 100%;
-    /* TODO */
+  grid-area: ctin;
+  width: 100%;
+  background-color: var(--primary);
+  padding: 0.25rem;
+}
+
+.chat-input > * {
+  height: 100%;
+}
+
+.chat-input > form {
+  display: flex;
+}
+
+.chat-input input[name="message"] {
+  flex-grow: 1;
 }
 
 .groups-nav {
-    grid-area: grpnav;
-    background-color: red;
-    /* TODO */
+  grid-area: gpnv;
+  background-color: var(--primary);
+  padding: 0.5rem;
+}
+
+.group-card {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  background-color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+  border-radius: var(--border-radius);
+  color: white;
+}
+
+.group-card a {
+  color: white;
+}
+
+.group-card::before {
+  content: "";
+  display: block;
+  height: 2rem;
+  width: 2rem;
+  background-color: var(--primary);
+  border-radius: 100%;
+  margin-right: 0.5rem;
+}
+
+.message-list {
+  grid-area: msgl;
+  max-width: 32rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary);
+  border-radius: var(--border-radius);
+  color: white;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  min-height: 3rem;
 }

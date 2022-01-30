@@ -1,12 +1,30 @@
-section 
-    h3 Messages 
-    ul
-        - messages.each do |message|
-            li.message
-                span #{message["username"]}
-                span #{message["message"]}
-section 
-    form action="/messages" method="post" 
-        input type="text" name="message" placeholder="Send a message..."
-        input type="hidden" name="group_id" value="#{group["id"]}"
-        input type="submit" value="Send"
+
+div.layout
+    aside.groups-nav 
+        ul
+            - if groups
+                - groups.each do |group|
+                    li.group-card
+                        a href="/groups/#{group["id"]}" #{group["name"]}
+
+    aside.members-nav
+        h3 Members
+        ul
+            - if members 
+                - members.each do |member|
+                    li.group-card #{member["username"]}
+
+    main.group-chat-section
+        header.group-header 
+            h2 #{group["name"]}
+        section.chat
+            ul.message-list
+                - messages.each do |message|
+                    li.message
+                        span #{message["username"]}
+                        span #{message["message"]}
+        section.chat-input
+            form action="/messages" method="post" 
+                input type="text" name="message" placeholder="Send a message..."
+                input type="hidden" name="group_id" value="#{group["id"]}"
+                input type="submit" value="Send"
