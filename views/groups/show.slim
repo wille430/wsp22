@@ -6,6 +6,7 @@ div.layout
                 - groups.each do |group|
                     li.group-card
                         a href="/groups/#{group["id"]}" #{group["name"]}
+        a href="/groups/new" + Create group
 
     aside.members-nav
         h3 Members
@@ -13,6 +14,7 @@ div.layout
             - if members 
                 - members.each do |member|
                     li.group-card #{member["username"]}
+        a href="/groups/#{group["id"]}/edit" +
 
     main.group-chat-section
         header.group-header 

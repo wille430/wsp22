@@ -5,6 +5,13 @@ require "bcrypt"
 
 enable :sessions
 
+def connect_db(path = "db/database.db")
+  db = SQLite3::Database.new(path)
+  db.results_as_hash = true
+
+  return db
+end
+
 def validate_user()
   user_id = session[:user_id]
 
@@ -24,7 +31,8 @@ def get_groups(user_id)
                         chat_groups
                       INNER JOIN groups_users
                       ON (chat_groups.id = groups_users.group_id)
-                      ")
+                      WHERE groups_users.user_id = ?
+                      ", user_id)
 
   return groups
 end
@@ -184,7 +192,7 @@ get("/groups/{group_id}") do
                         WHERE group_id = ?
                         ", group_id)
 
-    members = get_members_of_group(group_id)
+  members = get_members_of_group(group_id)
 
   group = db.execute("SELECT * FROM chat_groups WHERE id = ?", group_id).first
 
@@ -202,6 +210,47 @@ post("/messages") do
 
   # create message
   db.execute("INSERT INTO messages (message, group_id, user_id) VALUES (?, ?, ?)", message, group_id, user_id)
+
+  redirect("/groups/#{group_id}")
+end
+
+get("/groups/{group_id}/edit") do
+  slim(:"groups/edit")
+end
+
+post("/groups/{group_id}/update") do
+  new_member_username = params[:new_member_username]
+  group_id = params[:group_id]
+
+  puts "EDITING GROUP #{group_id}"
+
+  db = connect_db()
+
+  # get the user id of user with username
+  user = db.execute("SELECT id FROM users WHERE username = ?", new_member_username).first
+
+  if (!user)
+    # display error message
+    return "No user found with username #{new_member_username}"
+  end
+
+  user_id = user["id"]
+  puts "Checking if users #{user_id} exists in group #{group_id}"
+
+  # check if user is already a member of the group
+  is_member = db.execute("SELECT
+              1
+              FROM groups_users
+              WHERE user_id = ?
+              AND group_id = ?", user_id, group_id).first
+
+  if (is_member)
+    # display error message
+    return "User is already a member of the group"
+  end
+
+  puts "Adding user #{user_id} to group #{group_id}"
+  db.execute("INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)", user_id, group_id)
 
   redirect("/groups/#{group_id}")
 end
