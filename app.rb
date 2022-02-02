@@ -5,6 +5,60 @@ require "bcrypt"
 
 enable :sessions
 
+# before do
+# TODO: check for logged in user, array for protected routes
+# end
+
+# START HELPERS
+
+helpers do
+  def groups
+    db = connect_db()
+    user_id = session[:user_id]
+
+    if (!user_id)
+      # return empty if not logged in
+      return []
+    end
+
+    # get groups where user is a member of
+    groups = db.execute("SELECT 
+                        *
+                      FROM
+                        chat_groups
+                      INNER JOIN groups_users
+                      ON (chat_groups.id = groups_users.group_id)
+                      WHERE groups_users.user_id = ?
+                      ", user_id)
+
+    return groups
+  end
+
+  def members(group_id = params[:group_id])
+    if (!group_id)
+      return []
+    end
+
+    db = connect_db()
+
+    # get groups where user is a member of
+    members = db.execute("SELECT 
+                        users.username
+                      FROM
+                        users
+                      LEFT JOIN groups_users
+                      ON groups_users.user_id = users.id
+                      WHERE groups_users.group_id = ?
+                      ", group_id)
+
+    return members
+  end
+end
+
+# END HELPERS
+
+# START FUNCTIONS
+
 def connect_db(path = "db/database.db")
   db = SQLite3::Database.new(path)
   db.results_as_hash = true
@@ -20,48 +74,16 @@ def validate_user()
   end
 end
 
-def get_groups(user_id)
-  db = SQLite3::Database.new("db/database.db")
-  db.results_as_hash = true
+# END FUNCTIONS
 
-  # get groups where user is a member of
-  groups = db.execute("SELECT 
-                        *
-                      FROM
-                        chat_groups
-                      INNER JOIN groups_users
-                      ON (chat_groups.id = groups_users.group_id)
-                      WHERE groups_users.user_id = ?
-                      ", user_id)
-
-  return groups
-end
-
-def get_members_of_group(group_id)
-  db = SQLite3::Database.new("db/database.db")
-  db.results_as_hash = true
-
-  # get groups where user is a member of
-  members = db.execute("SELECT 
-                        users.username
-                      FROM
-                        users
-                      LEFT JOIN groups_users
-                      ON groups_users.user_id = users.id
-                      WHERE groups_users.group_id = ?
-                      ", group_id)
-
-  print(members)
-  return members
-end
+# START ROUTES
 
 get("/") do
   validate_user()
 
   user_id = session[:user_id]
-  groups = get_groups(user_id)
 
-  slim(:"groups/index", locals: { groups: groups })
+  slim(:"groups/index")
 end
 
 get("/login") do
@@ -72,8 +94,7 @@ post("/login") do
   username = params[:username]
   password = params[:password]
 
-  db = SQLite3::Database.new("db/database.db")
-  db.results_as_hash = true
+  db = connect_db()
 
   # get user with username
   user = db.execute("SELECT * FROM users WHERE username = ?", username).first
@@ -110,7 +131,7 @@ post("/users/new") do
     return "Passwords not matching"
   end
 
-  db = SQLite3::Database.new("db/database.db")
+  db = connect_db()
 
   # check for existing users
   user = db.execute("SELECT * FROM users WHERE username = ?", username).first
@@ -138,8 +159,7 @@ post("/groups") do
   group_name = params[:name]
   user_id = session[:user_id]
 
-  db = SQLite3::Database.new("db/database.db")
-  db.results_as_hash = true
+  db = connect_db()
 
   # create group
   db.execute("INSERT INTO chat_groups (name, creator) VALUES (?, ?)", group_name, user_id)
@@ -164,9 +184,7 @@ get("/groups/{group_id}") do
   group_id = params[:group_id]
   user_id = session[:user_id]
 
-  groups = get_groups(user_id)
-
-  db = SQLite3::Database.new("db/database.db")
+  db = connect_db()
   db.results_as_hash = true
 
   # check if user is a member of group
@@ -192,11 +210,9 @@ get("/groups/{group_id}") do
                         WHERE group_id = ?
                         ", group_id)
 
-  members = get_members_of_group(group_id)
-
   group = db.execute("SELECT * FROM chat_groups WHERE id = ?", group_id).first
 
-  slim(:"groups/show", locals: { group: group, messages: messages, groups: groups, members: members })
+  slim(:"groups/show", locals: { group: group, messages: messages })
 end
 
 post("/messages") do
@@ -206,7 +222,7 @@ post("/messages") do
   message = params[:message]
   user_id = session[:user_id]
 
-  db = SQLite3::Database.new("db/database.db")
+  db = connect_db()
 
   # create message
   db.execute("INSERT INTO messages (message, group_id, user_id) VALUES (?, ?, ?)", message, group_id, user_id)
