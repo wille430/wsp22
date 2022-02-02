@@ -5,9 +5,16 @@ require "bcrypt"
 
 enable :sessions
 
-# before do
-# TODO: check for logged in user, array for protected routes
-# end
+public_routes = [
+  "/login",
+  "/signup",
+]
+
+before do
+  if !(public_routes.include? request.path_info) && !session[:user_id]
+    redirect("/login")
+  end
+end
 
 # START HELPERS
 
@@ -66,21 +73,11 @@ def connect_db(path = "db/database.db")
   return db
 end
 
-def validate_user()
-  user_id = session[:user_id]
-
-  if !user_id
-    redirect("/login")
-  end
-end
-
 # END FUNCTIONS
 
 # START ROUTES
 
 get("/") do
-  validate_user()
-
   user_id = session[:user_id]
 
   slim(:"groups/index")
@@ -179,8 +176,6 @@ get("/groups/new") do
 end
 
 get("/groups/{group_id}") do
-  validate_user()
-
   group_id = params[:group_id]
   user_id = session[:user_id]
 
@@ -216,8 +211,6 @@ get("/groups/{group_id}") do
 end
 
 post("/messages") do
-  validate_user()
-
   group_id = params[:group_id]
   message = params[:message]
   user_id = session[:user_id]
