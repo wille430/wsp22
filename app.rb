@@ -11,8 +11,28 @@ public_routes = [
 ]
 
 before do
+  # redirect to login if user is trying to access route that requires user authentication
   if !(public_routes.include? request.path_info) && !session[:user_id]
     redirect("/login")
+  elsif request.path_info.match(/\/groups\/+?\d+/)
+
+    # check if user is a member of the group if route is /groups/:group_id
+    group_id = params[:group_id]
+    user_id = session[:user_id]
+
+    db = connect_db()
+
+    # check if user is a member of group
+    group_user = db.execute("SELECT
+              1
+              FROM groups_users
+              WHERE user_id = ?
+              AND group_id = ?", user_id, group_id)
+
+    if (!group_user)
+      # show error message: unauthorized
+      return "You are not a member of the group"
+    end
   end
 end
 
@@ -180,19 +200,6 @@ get("/groups/{group_id}") do
   user_id = session[:user_id]
 
   db = connect_db()
-  db.results_as_hash = true
-
-  # check if user is a member of group
-  group_user = db.execute("SELECT
-              1
-              FROM groups_users
-              WHERE user_id = ?
-              AND group_id = ?", user_id, group_id)
-
-  if (!group_user)
-    # show error message: unauthorized
-    return "You are not a member of the group"
-  end
 
   # get messages from group with sender username
   messages = db.execute("SELECT 
