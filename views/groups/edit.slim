@@ -2,3 +2,15 @@ h3 Add member
 form action="/groups/#{params[:group_id]}/update" method="post" 
     input type="text" name="new_member_username"
     input type="submit" value="Add"/
+
+h3 Members
+ul 
+    - members.each do |member|
+        li
+            span #{member["username"]}
+            form action="/groups/#{params[:group_id]}/members/#{member["id"]}/update" method="post"
+                select#role name="role_id" value="#{member["role_id"]}"
+                    option value="" No Role
+                    - group_roles.each do |group_role|
+                        option value="#{group_role["id"]}" #{group_role["title"]}
+                input type="submit" value="Assign"

@@ -34,6 +34,8 @@ before do
       return "You are not a member of the group"
     end
   end
+
+  # TODO: check if creator for certain routes
 end
 
 # START HELPERS
@@ -70,12 +72,16 @@ helpers do
 
     # get groups where user is a member of
     members = db.execute("SELECT 
-                        users.username
-                      FROM
-                        users
-                      LEFT JOIN groups_users
-                      ON groups_users.user_id = users.id
-                      WHERE groups_users.group_id = ?
+                        users.username,
+                        users.id,
+                        users_group_roles.group_role_id
+                      FROM 
+                        users_group_roles
+                      LEFT JOIN users
+                        ON users.id = users_group_roles.user_id
+                      INNER JOIN group_roles
+                        ON group_roles.id = users_group_roles.group_role_id
+                      WHERE group_roles.group_id = ?
                       ", group_id)
 
     return members
@@ -231,7 +237,14 @@ post("/messages") do
 end
 
 get("/groups/{group_id}/edit") do
-  slim(:"groups/edit")
+  group_id = params[:group_id]
+  role_id = params[:role_id]
+
+  db = connect_db()
+
+  group_roles = db.execute("SELECT * FROM group_roles WHERE group_id = ?", group_id)
+
+  slim(:"groups/edit", locals: { group_roles: group_roles })
 end
 
 post("/groups/{group_id}/update") do
@@ -269,4 +282,80 @@ post("/groups/{group_id}/update") do
   db.execute("INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)", user_id, group_id)
 
   redirect("/groups/#{group_id}")
+end
+
+get("/groups/:group_id/roles") do
+  db = connect_db()
+  group_id = params[:group_id]
+
+  roles = db.execute("SELECT * FROM group_roles WHERE group_id = ?", group_id)
+
+  slim(:"roles/index", locals: { roles: roles })
+end
+
+get("/groups/:group_id/roles/new") do
+  slim(:"roles/new")
+end
+
+post("/groups/:group_id/roles") do
+  group_id = params[:group_id]
+
+  title = params[:title]
+  can_delete = params[:can_delete]
+  can_kick = params[:can_kick]
+
+  db = connect_db()
+
+  db.execute("INSERT INTO group_roles (group_id, title, canDelete, canKick) VALUES (?, ?, ?, ?)", group_id, title, can_delete, can_kick)
+
+  redirect("/groups/#{group_id}/roles")
+end
+
+get("/groups/:group_id/roles/:role_id") do
+  slim(:"/roles/show")
+end
+
+get("/groups/:group_id/roles/:role_id/edit") do
+  slim(:"/roles/edit")
+end
+
+get("/groups/:group_id/roles/:role_id/update") do
+  # TODO: update group role
+end
+
+get("/groups/:group_id/roles/:role_id/destroy") do
+  # TODO: delete role and remove role from all users with the role
+end
+
+post("/groups/:group_id/members/:user_id/update") do
+  role_id = params[:role_id]
+  group_id = params[:group_id]
+  user_id = params[:user_id]
+
+  db = connect_db()
+
+  current_role_id = db.execute("SELECT 
+                                users_group_roles.group_role_id
+                              FROM 
+                                users_group_roles
+                              LEFT JOIN users
+                                ON users.id = users_group_roles.user_id
+                              INNER JOIN group_roles
+                                ON group_roles.id = users_group_roles.group_role_id
+                              WHERE group_roles.group_id = ?
+                              AND users.id = ?
+                              ", group_id, user_id).first
+
+  if (current_role_id) {
+    # update role_id
+
+    # db.execute("UPDATE users_group_roles ")
+  } else {
+    # create new relation
+
+    db.execute("INSERT INTO users_group_roles (group_role_id, user_id) VALUES (?, ?)", role_id, user_id)
+  }
+
+
+  redirect("/groups/#{group_id}/edit")
 end

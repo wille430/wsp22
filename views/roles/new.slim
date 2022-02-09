@@ -1,0 +1,11 @@
+/ TODO: create a new role
+form action="/groups/#{params[:group_id]}/roles" method="post"
+    input#title type="text" name="title" placeholder="Role Title"
+
+    input#canDelete type="checkbox" name="can_delete" 
+    label for="canDelete" Can Delete
+
+    input#canKick type="checkbox" name="can_kick" 
+    label for="canKick" Can Kick
+
+    input type="submit" value="Create Role"
