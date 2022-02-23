@@ -2,6 +2,7 @@ require "sinatra"
 require "sqlite3"
 require "slim"
 require "bcrypt"
+require "sinatra/reloader"
 
 enable :sessions
 
@@ -70,19 +71,19 @@ helpers do
 
     db = connect_db()
 
-    # get groups where user is a member of
-    members = db.execute("SELECT 
-                        users.username,
-                        users.id,
-                        users_group_roles.group_role_id
-                      FROM 
-                        users_group_roles
-                      LEFT JOIN users
-                        ON users.id = users_group_roles.user_id
-                      INNER JOIN group_roles
-                        ON group_roles.id = users_group_roles.group_role_id
-                      WHERE group_roles.group_id = ?
-                      ", group_id)
+    members = db.execute("SELECT
+                          users.id,
+                          users.username,
+                          users_group_roles.group_role_id
+                        FROM
+                          users
+                        INNER JOIN groups_users
+                          ON groups_users.user_id = users.id
+                        LEFT JOIN users_group_roles
+                          ON users_group_roles.user_id = users.id
+                          AND users_group_roles.group_role_id = (SELECT id FROM group_roles WHERE group_roles.group_id = ?)
+                        WHERE groups_users.group_id = ?
+                        ", group_id, group_id)
 
     return members
   end
@@ -346,16 +347,25 @@ post("/groups/:group_id/members/:user_id/update") do
                               AND users.id = ?
                               ", group_id, user_id).first
 
-  if (current_role_id) {
-    # update role_id
-
-    # db.execute("UPDATE users_group_roles ")
-  } else {
+  if (current_role_id)
+    if !role_id
+      # update role_id
+      db.execute("UPDATE users_group_roles
+                SET group_role_id = ?
+                WHERE users_group_roles.group_role_id =
+                  (SELECT id 
+                    FROM group_roles 
+                  WHERE group_id = ?)
+                AND user_id = ?", role_id, group_id, user_id)
+    else
+      db.execute("DELETE
+                    users_group_roles
+                  INNER JOIN groups_users")
+    end
+  else
     # create new relation
-
     db.execute("INSERT INTO users_group_roles (group_role_id, user_id) VALUES (?, ?)", role_id, user_id)
-  }
-
+  end
 
   redirect("/groups/#{group_id}/edit")
 end
