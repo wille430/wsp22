@@ -6,11 +6,16 @@ form action="/groups/#{params[:group_id]}/update" method="post"
 h3 Members
 ul 
     - members.each do |member|
+        -puts member
+        - puts member["group_role_id"]
         li
             span #{member["username"]}
             form action="/groups/#{params[:group_id]}/members/#{member["id"]}/update" method="post"
-                select#role name="role_id" value="#{member["role_id"]}"
+                select#role name="role_id"
                     option value="" No Role
                     - group_roles.each do |group_role|
-                        option value="#{group_role["id"]}" #{group_role["title"]}
+                        - if member["group_role_id"] === group_role["id"]
+                            option selected="selected" value="#{group_role["id"]}" #{group_role["title"]}
+                        - else
+                            option value="#{group_role["id"]}" #{group_role["title"]}
                 input type="submit" value="Assign"
