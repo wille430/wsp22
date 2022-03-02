@@ -1,1 +1,19 @@
-/ TODO: update role form
+- current_role = role()
+form action="/groups/#{params[:group_id]}/roles/#{params[:role_id]}/update" method="post"
+    label New Role Name
+    input type="text" name="title" value="#{current_role["title"]}"
+
+    - if current_role["canDelete"] === "on"
+        input#canDelete type="checkbox" name="can_delete" checked="checked"
+    - else 
+        input#canDelete type="checkbox" name="can_delete"
+    label for="canDelete" Can Delete
+
+
+    - if current_role["canKick"] === "on"
+        input#canKick type="checkbox" name="can_kick" checked="checked"
+    - else 
+        input#canKick type="checkbox" name="can_kick"
+    label for="canKick" Can Kick
+
+    input type="submit" value="Update"

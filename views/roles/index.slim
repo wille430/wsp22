@@ -3,7 +3,9 @@ h3 Roles in group #{params[:group_id]}:
 - if roles.length >= 1
     ul 
         - roles.each do |role|
-            li #{role["title"]}
+            li 
+                span #{role["title"]}
+                a href="/groups/#{params[:group_id]}/roles/#{role["id"]}/edit" Edit
 - else 
     p No roles in the group
     a href="/groups/#{params[:group_id]}/roles/new" Create one here!

@@ -87,6 +87,17 @@ helpers do
 
     return members
   end
+
+  def role(role_id = params[:role_id])
+    if (!role_id)
+      return nil
+    end
+
+    db = connect_db()
+
+    role = db.execute("SELECT * FROM group_roles WHERE id = ?", role_id).first
+    return role
+  end
 end
 
 # END HELPERS
@@ -313,15 +324,31 @@ post("/groups/:group_id/roles") do
 end
 
 get("/groups/:group_id/roles/:role_id") do
-  slim(:"/roles/show")
+  slim(:"roles/show")
 end
 
 get("/groups/:group_id/roles/:role_id/edit") do
-  slim(:"/roles/edit")
+  slim(:"roles/edit")
 end
 
-get("/groups/:group_id/roles/:role_id/update") do
+post("/groups/:group_id/roles/:role_id/update") do
   # TODO: update group role
+  group_id = params[:group_id]
+  role_id = params[:role_id]
+
+  title = params[:title]
+  can_delete = params[:can_delete]
+  can_kick = params[:can_kick]
+
+  db = connect_db()
+
+  db.execute("UPDATE group_roles
+              SET title = ?,
+                  canDelete = ?,
+                  canKick = ?
+              WHERE id = ?", title, can_delete, can_kick, role_id)
+
+  redirect("/groups/#{group_id}/roles/#{role_id}/edit")
 end
 
 get("/groups/:group_id/roles/:role_id/destroy") do
