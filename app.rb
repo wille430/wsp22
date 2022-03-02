@@ -358,9 +358,10 @@ post("/groups/:group_id/members/:user_id/update") do
                   WHERE group_id = ?)
                 AND user_id = ?", role_id, group_id, user_id)
     else
-      db.execute("DELETE
-                    users_group_roles
-                  INNER JOIN groups_users")
+      # delete role from user
+      db.execute("DELETE FROM users_group_roles
+                  WHERE users_group_roles.group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)
+                  AND user_id = ?", group_id, user_id)
     end
   else
     # create new relation
