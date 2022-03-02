@@ -6,8 +6,6 @@ form action="/groups/#{params[:group_id]}/update" method="post"
 h3 Members
 ul 
     - members.each do |member|
-        -puts member
-        - puts member["group_role_id"]
         li
             span #{member["username"]}
             form action="/groups/#{params[:group_id]}/members/#{member["id"]}/update" method="post"
