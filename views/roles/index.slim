@@ -6,6 +6,8 @@ h3 Roles in group #{params[:group_id]}:
             li 
                 span #{role["title"]}
                 a href="/groups/#{params[:group_id]}/roles/#{role["id"]}/edit" Edit
+                form action="/groups/#{params[:group_id]}/roles/#{role["id"]}/destroy" method="post" 
+                    input type="submit" value="Delete"
 - else 
     p No roles in the group
     a href="/groups/#{params[:group_id]}/roles/new" Create one here!
