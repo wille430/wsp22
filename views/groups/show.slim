@@ -1,4 +1,3 @@
-
 div.layout
     aside.groups-nav 
         a href="/" #{"<- All groups"}
@@ -26,6 +25,9 @@ div.layout
                     li.message
                         span #{message["username"]}
                         span #{message["message"]}
+                        - if session[:user_id] == message["user_id"]
+                            form action="/groups/#{group["id"]}/messages/#{message["id"]}/delete" method="post"   
+                                input type="submit" value="Delete"
         section.chat-input
             form action="/messages" method="post" 
                 input type="text" name="message" placeholder="Send a message..."

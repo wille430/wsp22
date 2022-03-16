@@ -134,6 +134,22 @@ post("/messages") do
   redirect("/groups/#{group_id}")
 end
 
+post("/groups/{group_id}/messages/{message_id}/delete") do
+  group_id = params[:group_id]
+  message_id = params[:message_id]
+  user_id = session[:user_id]
+
+  message = get_message_by_id(message_id)
+
+  # check if message is sent by user trying to delete it
+  if (message["user_id"] == user_id)
+    delete_message(message_id)
+    redirect("/groups/#{group_id}")
+  else
+    return "You don't have permission to delete message"
+  end
+end
+
 get("/groups/{group_id}/edit") do
   group_id = params[:group_id]
   role_id = params[:role_id]

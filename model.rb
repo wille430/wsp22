@@ -1,3 +1,5 @@
+require "sinatra/reloader"
+
 def connect_db(path = "db/database.db")
   db = SQLite3::Database.new(path)
   db.results_as_hash = true
@@ -67,7 +69,7 @@ def create_group(user_id, group_name)
 end
 
 def get_group_by_id(group_id)
-  # TODO
+  db = connect_db()
   group = db.execute("SELECT * FROM chat_groups WHERE id = ?", group_id).first
   return group
 end
@@ -94,7 +96,8 @@ def get_messages_in_group(group_id)
   messages = db.execute("SELECT 
                           messages.id,
                           users.username,
-                          messages.message
+                          messages.message,
+                          messages.user_id
                         FROM messages
                         LEFT JOIN users
                         ON messages.user_id = users.id
@@ -103,12 +106,27 @@ def get_messages_in_group(group_id)
   return messages
 end
 
+def get_message_by_id(id)
+  db = connect_db()
+
+  message = db.execute("SELECT
+                          *
+                        FROM messages
+                        LEFT JOIN users
+                        ON users.id = messages.user_id
+                        WHERE messages.id = ?", id).first
+
+  return message
+end
+
 def update_message_in_group(group_id)
   # TODO
 end
 
-def delete_message_in_group(message_id)
-  # TODO
+def delete_message(id)
+  db = connect_db()
+
+  db.execute("DELETE FROM messages WHERE id = ?", id)
 end
 
 def get_groups_of_user(user_id)
