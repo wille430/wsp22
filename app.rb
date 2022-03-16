@@ -16,6 +16,11 @@ before do
   # redirect to login if user is trying to access route that requires user authentication
   if !(public_routes.include? request.path_info) && !session[:user_id]
     redirect("/login")
+  elsif request.path_info.match(/\/groups\/\d+\/\w+/)
+    # for /groups/id/edit, /groups/id/roles etc
+    if (!user_is_owner_of_group(params[:group_id], session[:user_id]))
+      return "Permission denied"
+    end
   elsif request.path_info.match(/\/groups\/+?\d+/)
 
     # check if user is a member of the group if route is /groups/:group_id
@@ -152,8 +157,8 @@ end
 
 get("/groups/{group_id}/edit") do
   group_id = params[:group_id]
-  role_id = params[:role_id]
 
+  # check if user is owner of group
   group_roles = get_roles_in_group(group_id)
 
   slim(:"groups/edit", locals: { group_roles: group_roles })

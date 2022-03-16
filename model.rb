@@ -297,3 +297,8 @@ def delete_role_in_group(group_id, role_id)
               WHERE group_roles.id = ?
               AND group_roles.group_id", role_id, group_id)
 end
+
+def user_is_owner_of_group(group_id, user_id)
+  group = get_group_by_id(group_id)
+  return group["creator"] == user_id
+end
