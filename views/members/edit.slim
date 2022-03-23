@@ -9,7 +9,7 @@ section.edit-role-section
         - members.each do |member|
             li
                 span #{member["username"]}
-                form action="/groups/#{params[:group_id]}/members/#{member["id"]}/update" method="post"
+                form action="/groups/#{params[:group_id]}/members/#{member["id"]}/role/update" method="post"
                     select#role name="role_id"
                         option value="" No Role
                         - group_roles.each do |group_role|
