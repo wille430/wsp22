@@ -13,8 +13,13 @@ div.layout
         ul
             - if members 
                 - members.each do |member|
-                    li.group-card #{member["username"]}
-        a href="/groups/#{group["id"]}/edit" +
+                    li.member-card 
+                        - role_of_member = role(member["group_role_id"])
+                        span #{member["username"]}
+                        - if role_of_member
+                            span #{role_of_member["title"]}
+        - if group["creator"] == session[:user_id]
+            a href="/groups/#{group["id"]}/members/edit" +
 
     main.group-chat-section
         header.group-header 
@@ -29,7 +34,6 @@ div.layout
                             form action="/groups/#{group["id"]}/messages/#{message["id"]}/delete" method="post"   
                                 input type="submit" value="Delete"
         section.chat-input
-            form action="/messages" method="post" 
+            form action="/groups/#{group["id"]}/messages" method="post" 
                 input type="text" name="message" placeholder="Send a message..."
-                input type="hidden" name="group_id" value="#{group["id"]}"
                 input type="submit" value="Send"

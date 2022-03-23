@@ -7,6 +7,18 @@ def connect_db(path = "db/database.db")
   return db
 end
 
+def get_user_by_id(user_id)
+  db = connect_db()
+
+  return db.execute("SELECT * FROM users WHERE user_id = ?", user_id).first
+end
+
+def get_user_by_username(username)
+  db = connect_db()
+
+  return db.execute("SELECT * FROM users WHERE username = ?", username).first
+end
+
 def login_user(username, password)
   db = connect_db()
 
@@ -74,8 +86,13 @@ def get_group_by_id(group_id)
   return group
 end
 
-def update_group(group_id)
-  # TODO
+def update_group(group_id, name)
+  db = connect_db()
+
+  db.execute("UPDATE
+                chat_groups
+              SET name = ?
+              WHERE id = ?", name, group_id)
 end
 
 def delete_group(group_id)
@@ -164,7 +181,7 @@ def user_exists_in_group(group_id, user_id)
   db = connect_db()
 
   is_member = db.execute("SELECT
-              1
+              *
               FROM groups_users
               WHERE user_id = ?
               AND group_id = ?", user_id, group_id).first
@@ -181,6 +198,7 @@ def add_member_to_group(group_id, new_member_username)
     raise "No user found with username #{new_member_username}"
   end
 
+  user = get_user_by_username(new_member_username)
   user_id = user["id"]
 
   if (user_exists_in_group(group_id, user_id))
@@ -300,5 +318,6 @@ end
 
 def user_is_owner_of_group(group_id, user_id)
   group = get_group_by_id(group_id)
+
   return group["creator"] == user_id
 end

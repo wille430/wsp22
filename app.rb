@@ -16,11 +16,6 @@ before do
   # redirect to login if user is trying to access route that requires user authentication
   if !(public_routes.include? request.path_info) && !session[:user_id]
     redirect("/login")
-  elsif request.path_info.match(/\/groups\/\d+\/\w+/)
-    # for /groups/id/edit, /groups/id/roles etc
-    if (!user_is_owner_of_group(params[:group_id], session[:user_id]))
-      return "Permission denied"
-    end
   elsif request.path_info.match(/\/groups\/+?\d+/)
 
     # check if user is a member of the group if route is /groups/:group_id
@@ -48,7 +43,7 @@ end
 # START HELPERS
 
 helpers do
-  def groups(user_id = params[:user_id])
+  def groups(user_id = session[:user_id])
     return get_groups_of_user(user_id)
   end
 
@@ -59,17 +54,17 @@ helpers do
   def role(role_id = params[:role_id])
     return get_role(role_id)
   end
+
+  def group(group_id = params[:group_id])
+    return get_group_by_id(group_id)
+  end
 end
 
 # END HELPERS
 
 # START ROUTES
 
-get("/") do
-  user_id = session[:user_id]
-
-  slim(:"groups/index")
-end
+# AUTH
 
 get("/login") do
   slim(:login)
@@ -92,6 +87,8 @@ get("/signup") do
   slim(:signup)
 end
 
+# USERS
+
 post("/users/new") do
   username = params[:username]
   password = params[:password]
@@ -104,6 +101,12 @@ post("/users/new") do
   else
     redirect("/")
   end
+end
+
+# GROUPS
+
+get("/") do
+  slim(:"groups/index")
 end
 
 post("/groups") do
@@ -119,9 +122,13 @@ get("/groups/new") do
   slim(:"groups/new")
 end
 
-get("/groups/{group_id}") do
+get("/groups/:group_id") do
   group_id = params[:group_id]
   user_id = session[:user_id]
+
+  if (!user_exists_in_group(group_id, user_id))
+    return "You are not a member of this group"
+  end
 
   group = get_group_by_id(group_id)
   messages = get_messages_in_group(group_id)
@@ -129,22 +136,54 @@ get("/groups/{group_id}") do
   slim(:"groups/show", locals: { group: group, messages: messages })
 end
 
-post("/messages") do
+get("/groups/:group_id/edit") do
+  slim(:"groups/edit")
+end
+
+post("/groups/:group_id/update") do
+  group_id = params[:group_id]
+  user_id = session[:user_id]
+  title = params[:title]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
+
+  update_group(group_id, title)
+
+  redirect("/groups/#{group_id}")
+end
+
+# TODO: DELETE GROUP
+
+# MESSAGES
+
+post("/groups/:group_id/messages") do
   group_id = params[:group_id]
   message = params[:message]
   user_id = session[:user_id]
+
+  if (!user_exists_in_group(group_id, user_id))
+    return "You are not a member of this group"
+  end
 
   create_message_in_group(group_id, user_id, message)
 
   redirect("/groups/#{group_id}")
 end
 
-post("/groups/{group_id}/messages/{message_id}/delete") do
+# TODO: UPDATE MESSAGE
+
+post("/groups/{group_id}/messages/:message_id/delete") do
   group_id = params[:group_id]
   message_id = params[:message_id]
   user_id = session[:user_id]
 
   message = get_message_by_id(message_id)
+
+  if (!message)
+    return "Message not found"
+  end
 
   # check if message is sent by user trying to delete it
   if (message["user_id"] == user_id)
@@ -155,26 +194,51 @@ post("/groups/{group_id}/messages/{message_id}/delete") do
   end
 end
 
-get("/groups/{group_id}/edit") do
+# MEMBERS
+
+post("/groups/:group_id/members") do
+  new_member_username = params[:new_member_username]
   group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
+
+  begin
+    add_member_to_group(group_id, new_member_username)
+  rescue => e
+    return e.message
+  end
+
+  redirect("/groups/#{group_id}/members/edit")
+end
+
+get("/groups/:group_id/members/edit") do
+  group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
 
   # check if user is owner of group
   group_roles = get_roles_in_group(group_id)
 
-  slim(:"groups/edit", locals: { group_roles: group_roles })
+  slim(:"members/edit", locals: { group_roles: group_roles })
 end
 
-post("/groups/{group_id}/update") do
-  new_member_username = params[:new_member_username]
-  group_id = params[:group_id]
+# TODO: DELETE MEMBER
 
-  add_member_to_group(group_id, new_member_username)
-
-  redirect("/groups/#{group_id}")
-end
+# ROLES
 
 get("/groups/:group_id/roles") do
   group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
 
   roles = get_roles_in_group(group_id)
 
@@ -182,11 +246,23 @@ get("/groups/:group_id/roles") do
 end
 
 get("/groups/:group_id/roles/new") do
+  group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
+
   slim(:"roles/new")
 end
 
 post("/groups/:group_id/roles") do
   group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
 
   title = params[:title]
   can_delete = params[:can_delete]
@@ -198,16 +274,35 @@ post("/groups/:group_id/roles") do
 end
 
 get("/groups/:group_id/roles/:role_id") do
+  group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
+
   slim(:"roles/show")
 end
 
 get("/groups/:group_id/roles/:role_id/edit") do
+  group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
+
   slim(:"roles/edit")
 end
 
 post("/groups/:group_id/roles/:role_id/update") do
   group_id = params[:group_id]
+  user_id = session[:user_id]
   role_id = params[:role_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
 
   title = params[:title]
   can_delete = params[:can_delete]
@@ -215,25 +310,38 @@ post("/groups/:group_id/roles/:role_id/update") do
 
   update_role(role_id, title, can_delete, can_kick)
 
-  redirect("/groups/#{group_id}/roles/#{role_id}/edit")
+  redirect("/groups/#{group_id}/roles")
 end
 
 post("/groups/:group_id/roles/:role_id/destroy") do
   # TODO: delete role and remove role from all users with the role
   role_id = params[:role_id]
   group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
 
   delete_role_in_group(group_id, role_id)
 
   redirect("/groups/#{group_id}/roles")
 end
 
-post("/groups/:group_id/members/:user_id/update") do
+# MEMBER ROLES RELATION
+
+post("/groups/:group_id/members/:user_id/role/update") do
   role_id = params[:role_id]
   group_id = params[:group_id]
-  user_id = params[:user_id]
+  member_user_id = params[:user_id]
 
-  update_role_of_user_in_group(group_id, user_id, role_id)
+  user_id = session[:user_id]
 
-  redirect("/groups/#{group_id}/edit")
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
+
+  update_role_of_user_in_group(group_id, member_user_id, role_id)
+
+  redirect("/groups/#{group_id}/members/edit")
 end

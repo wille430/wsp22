@@ -1,0 +1,20 @@
+section.add-member-section
+    h3 Add member
+    form action="/groups/#{params[:group_id]}/members" method="post" 
+        input type="text" name="new_member_username"
+        input type="submit" value="Add"/
+section.edit-role-section
+    h3 Members
+    ul 
+        - members.each do |member|
+            li
+                span #{member["username"]}
+                form action="/groups/#{params[:group_id]}/members/#{member["id"]}/update" method="post"
+                    select#role name="role_id"
+                        option value="" No Role
+                        - group_roles.each do |group_role|
+                            - if member["group_role_id"] === group_role["id"]
+                                option selected="selected" value="#{group_role["id"]}" #{group_role["title"]}
+                            - else
+                                option value="#{group_role["id"]}" #{group_role["title"]}
+                    input type="submit" value="Assign"
