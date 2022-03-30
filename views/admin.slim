@@ -1,0 +1,16 @@
+== slim :layout
+    / TODO: styla
+    nav.admin_side_nav
+
+        h4 Group Roles
+        ul 
+            li 
+                a href="/groups/#{params[:group_id]}/roles" All roles
+            li
+                a href="/groups/#{params[:group_id]}/roles/new" Create a new role
+        h4 Members
+        ul
+            li 
+                a href="/groups/#{params[:group_id]}/members/edit" Edit members
+    main
+        == yield

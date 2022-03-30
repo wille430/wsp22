@@ -1,13 +1,14 @@
-/ TODO: display all roles in group
-h3 Roles in group #{params[:group_id]}:
-- if roles.length >= 1
-    ul 
-        - roles.each do |role|
-            li 
-                span #{role["title"]}
-                a href="/groups/#{params[:group_id]}/roles/#{role["id"]}/edit" Edit
-                form action="/groups/#{params[:group_id]}/roles/#{role["id"]}/destroy" method="post" 
-                    input type="submit" value="Delete"
-- else 
-    p No roles in the group
-    a href="/groups/#{params[:group_id]}/roles/new" Create one here!
+== slim :admin
+    / TODO: display all roles in group
+    h3 Roles in group #{params[:group_id]}:
+    - if roles.length >= 1
+        ul 
+            - roles.each do |role|
+                li 
+                    span #{role["title"]}
+                    a href="/groups/#{params[:group_id]}/roles/#{role["id"]}/edit" Edit
+                    form action="/groups/#{params[:group_id]}/roles/#{role["id"]}/destroy" method="post" 
+                        input type="submit" value="Delete"
+    - else 
+        p No roles in the group
+        a href="/groups/#{params[:group_id]}/roles/new" Create one here!

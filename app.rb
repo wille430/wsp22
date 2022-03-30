@@ -33,7 +33,7 @@ before do
 
     if (!group_user)
       # show error message: unauthorized
-      return "You are not a member of the group"
+      return "You are not a member of this group"
     end
   end
 
@@ -109,6 +109,11 @@ get("/") do
   slim(:"groups/index")
 end
 
+# TODO: bestäm vad om /groups eller / ska användas för grupp index
+get("/groups") do
+  redirect("/")
+end
+
 post("/groups") do
   group_name = params[:name]
   user_id = session[:user_id]
@@ -154,7 +159,18 @@ post("/groups/:group_id/update") do
   redirect("/groups/#{group_id}")
 end
 
-# TODO: DELETE GROUP
+post("/groups/:group_id/destroy") do
+  group_id = params[:group_id]
+  user_id = session[:user_id]
+
+  if (!user_is_owner_of_group(group_id, user_id))
+    return "You are not the owner of this group"
+  end
+
+  delete_group(group_id)
+
+  redirect("/groups")
+end
 
 # MESSAGES
 
@@ -172,26 +188,30 @@ post("/groups/:group_id/messages") do
   redirect("/groups/#{group_id}")
 end
 
-# TODO: UPDATE MESSAGE
-
-post("/groups/{group_id}/messages/:message_id/delete") do
+post("/groups/{group_id}/messages/{message_id}/update") do
   group_id = params[:group_id]
   message_id = params[:message_id]
   user_id = session[:user_id]
 
-  message = get_message_by_id(message_id)
+  begin
+    delete_message(group_id, message_id, user_id)
+  rescue => e
+    return e.message
+  end
+end
 
-  if (!message)
-    return "Message not found"
+post("/groups/{group_id}/messages/:message_id/destroy") do
+  group_id = params[:group_id]
+  message_id = params[:message_id]
+  user_id = session[:user_id]
+
+  begin
+    delete_message(group_id, message_id, user_id)
+  rescue => e
+    return e.message
   end
 
-  # check if message is sent by user trying to delete it
-  if (message["user_id"] == user_id)
-    delete_message(message_id)
-    redirect("/groups/#{group_id}")
-  else
-    return "You don't have permission to delete message"
-  end
+  redirect("/groups/#{group_id}")
 end
 
 # MEMBERS
@@ -229,6 +249,19 @@ get("/groups/:group_id/members/edit") do
 end
 
 # TODO: DELETE MEMBER
+post("/groups/{group_id}/members/{member_id}/destroy") do
+  group_id = params[:group_id]
+  member_id = params[:member_id]
+  user_id = session[:user_id]
+
+  if (!user_can_kick(user_id, member_id, group_id))
+    return "You dont have permission to kick member with id #{member_id}"
+  end
+
+  delete_member(member_id, group_id)
+
+  redirect("groups/#{group_id}/members/edit")
+end
 
 # ROLES
 

@@ -10,7 +10,7 @@ end
 def get_user_by_id(user_id)
   db = connect_db()
 
-  return db.execute("SELECT * FROM users WHERE user_id = ?", user_id).first
+  return db.execute("SELECT * FROM users WHERE id = ?", user_id).first
 end
 
 def get_user_by_username(username)
@@ -96,7 +96,9 @@ def update_group(group_id, name)
 end
 
 def delete_group(group_id)
-  # TODO
+  db = connect_db()
+
+  db.execute("DELETE FROM chat_groups WHERE id = ?", group_id)
 end
 
 def create_message_in_group(group_id, user_id, message)
@@ -140,10 +142,18 @@ def update_message_in_group(group_id)
   # TODO
 end
 
-def delete_message(id)
+def delete_message(group_id, message_id, user_id)
   db = connect_db()
 
-  db.execute("DELETE FROM messages WHERE id = ?", id)
+  message = get_message_by_id(message_id)
+  group = get_group_by_id(group_id)
+
+  # user is not group owner or creator of the message
+  if (message["user_id"] != user_id && group["creator"] != user_id)
+    raise "You don't have permissions to delete message with id #{message_id}"
+  end
+
+  db.execute("DELETE FROM messages WHERE id = ?", message_id)
 end
 
 def get_groups_of_user(user_id)
@@ -157,7 +167,8 @@ def get_groups_of_user(user_id)
 
   # get groups where user is a member of
   groups = db.execute("SELECT 
-                        *
+                        *,
+                        chat_groups.id as id
                       FROM
                         chat_groups
                       INNER JOIN groups_users
@@ -232,6 +243,42 @@ def get_members_in_group(group_id)
                         ", group_id, group_id)
 
   return members
+end
+
+def delete_member(member_id, group_id)
+  db = connect_db()
+
+  member = db.execute("SELECT * FROM groups_users WHERE user_id = ? AND group_id = ?", member_id, group_id).first
+
+  if (!member)
+    raise "No member with id #{member_id} was found"
+  end
+
+  user_id = member["user_id"]
+
+  group = get_group_by_id(group_id)
+
+  # ska ej kunna ta bort skaparen av gruppen
+  if (!group["creator"] != user_id.to_i)
+    print("Deleting user #{member_id} from group #{group_id}")
+    # delete user group role relation
+    db.execute("DELETE FROM users_group_roles WHERE user_id = ? AND group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)", member_id, group_id)
+
+    # delete user group relation
+    db.execute("DELETE FROM groups_users WHERE user_id = ? AND group_id = ?", member_id, group_id)
+  end
+end
+
+def user_can_kick(user_id, member_id, group_id)
+  db = connect_db()
+
+  user = get_user_by_id(user_id)
+  member = get_user_by_id(member_id)
+  group = get_group_by_id(group_id)
+
+  user_role = db.execute("SELECT * FROM users_group_roles WHERE user_id = ? AND group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)", user_id, group_id).first
+
+  return (group["creator"] == user_id || (user_role && user_role["canKick"] == "on"))
 end
 
 def create_role(group_id, title, can_delete, can_kick)
