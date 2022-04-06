@@ -260,7 +260,12 @@ post("/groups/{group_id}/members/{member_id}/destroy") do
 
   delete_member(member_id, group_id)
 
-  redirect("groups/#{group_id}/members/edit")
+  redirect_route = params[:redirect]
+  if (redirect_route)
+    redirect(redirect_route)
+  else
+    redirect("groups/#{group_id}/members/edit")
+  end
 end
 
 # ROLES

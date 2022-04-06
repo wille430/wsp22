@@ -12,12 +12,29 @@ div.layout
         h3 Members
         ul
             - if members 
+                - i = 0
                 - members.each do |member|
                     li.member-card 
                         - role_of_member = role(member["group_role_id"])
-                        span #{member["username"]}
-                        - if role_of_member
+                        div.cardHeader
+                            span #{member["username"]}
+                            button.toggleMemberOptionsButton onClick='show(#{i})'
+                                span ...
+                            ul.memberOptions style='display:none;'
+                                li
+                                    form action="/groups/#{group["id"]}/members/#{member["id"]}/destroy" method="post" 
+                                        input type="submit" value="Kick"/
+                                        input type="hidden" name="redirect" value="/groups/#{group["id"]}"/
+                                li
+                                    form action="/groups/#{group["id"]}/members/edit" method="get" 
+                                        input type="submit" value="Assign Role"/
+           
+                        - isGroupOwner = member["id"] == group["creator"]
+                        - if role_of_member && !isGroupOwner
                             span #{role_of_member["title"]}
+                        - elsif isGroupOwner
+                            span Group Owner
+                    - i += 1
         - if group["creator"] == session[:user_id]
             a href="/groups/#{group["id"]}/members/edit" +
 
@@ -37,3 +54,21 @@ div.layout
             form action="/groups/#{group["id"]}/messages" method="post" 
                 input type="text" name="message" placeholder="Send a message..."
                 input type="submit" value="Send"
+    javascript: 
+        let memberOptionsArray = document.querySelectorAll(".memberOptions")
+        function show(index) {
+            let i = 0
+            for (const memberOptions of memberOptionsArray) {
+                if (i === index) {
+                    currentStyle = memberOptions.style.display
+                    if (currentStyle === 'none') {
+                        memberOptions.style.display = 'block'
+                    } else {
+                        memberOptions.style.display = 'none'
+                    }
+                } else {
+                    memberOptions.style.display = 'none'
+                }
+                i += 1
+            }
+        }
