@@ -21,13 +21,16 @@ div.layout
                             button.toggleMemberOptionsButton onClick='show(#{i})'
                                 span ...
                             ul.memberOptions style='display:none;'
-                                li
-                                    form action="/groups/#{group["id"]}/members/#{member["id"]}/destroy" method="post" 
-                                        input type="submit" value="Kick"/
-                                        input type="hidden" name="redirect" value="/groups/#{group["id"]}"/
-                                li
-                                    form action="/groups/#{group["id"]}/members/edit" method="get" 
-                                        input type="submit" value="Assign Role"/
+                                - if current_user_can_kick(member["id"], group["id"])
+                                    li
+                                        form action="/groups/#{group["id"]}/members/#{member["id"]}/destroy" method="post" 
+                                                input type="submit" value="Kick"/
+                                                input type="hidden" name="redirect" value="/groups/#{group["id"]}"/
+                                
+                                - if session[:user_id] == group["creator"]
+                                    li
+                                        form action="/groups/#{group["id"]}/members/edit" method="get" 
+                                            input type="submit" value="Assign Role"/
            
                         - isGroupOwner = member["id"] == group["creator"]
                         - if role_of_member && !isGroupOwner

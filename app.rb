@@ -10,13 +10,14 @@ enable :sessions
 public_routes = [
   "/login",
   "/signup",
+  "/users/new",
 ]
 
 before do
   # redirect to login if user is trying to access route that requires user authentication
   if !(public_routes.include? request.path_info) && !session[:user_id]
     redirect("/login")
-  elsif request.path_info.match(/\/groups\/+?\d+/)
+  elsif request.path_info.match(/\/groups+?\d+/)
 
     # check if user is a member of the group if route is /groups/:group_id
     group_id = params[:group_id]
@@ -58,6 +59,11 @@ helpers do
   def group(group_id = params[:group_id])
     return get_group_by_id(group_id)
   end
+
+  def current_user_can_kick(member_id, group_id)
+    user_id = session[:user_id]
+    return user_can_kick(user_id, member_id, group_id)
+  end
 end
 
 # END HELPERS
@@ -85,6 +91,11 @@ end
 
 get("/signup") do
   slim(:signup)
+end
+
+post("/logout") do
+  session[:user_id] = nil
+  redirect("/login")
 end
 
 # USERS

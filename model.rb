@@ -270,15 +270,25 @@ def delete_member(member_id, group_id)
 end
 
 def user_can_kick(user_id, member_id, group_id)
+  if (group["creator"] == user_id)
+    return true
+  end
+
   db = connect_db()
 
   user = get_user_by_id(user_id)
   member = get_user_by_id(member_id)
   group = get_group_by_id(group_id)
 
-  user_role = db.execute("SELECT * FROM users_group_roles WHERE user_id = ? AND group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)", user_id, group_id).first
+  user_role_id = db.execute("SELECT * FROM users_group_roles WHERE user_id = ? AND group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)", user_id, group_id).first
+  if (!user_role_id)
+    return false
+  end
+  user_role_id = user_role_id["group_role_id"]
 
-  return (group["creator"] == user_id || (user_role && user_role["canKick"] == "on"))
+  user_role = db.execute("SELECT * FROM group_roles WHERE id = ?", user_role_id).first
+
+  return (user_role && user_role["canKick"] == "on")
 end
 
 def create_role(group_id, title, can_delete, can_kick)

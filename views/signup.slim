@@ -1,5 +1,15 @@
-form action="/users/new" method="post"
-    input type="text" name="username"/
-    input type="password" name="password"/
-    input type="password" name="confirm_password"/
-    input type="submit" value="Sign Up"/
+main.login
+    section
+        h2 Signup
+        form.loginForm  action="/users/new" method="post" 
+            label for="usernameField" Username
+            input#usernameField.textInput type="text" name="username"/
+            
+            label for="passwordField" Password
+            input#passwordField.textInput type="password" name="password"/
+
+            label for="passwordConfirmField" Password Confirm
+            input#passwordConfirmField.textInput type="password" name="confirm_password"/
+            
+            input type="submit" value="Sign Up"/
+            a href="/login" I already have an account
