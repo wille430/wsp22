@@ -1,4 +1,9 @@
 module Model
+  # Create an instance of the database
+  #
+  # @param [String] path The path to the database file
+  #
+  # @return [SQLite3::Database]
   def connect_db(path = "db/database.db")
     db = SQLite3::Database.new(path)
     db.results_as_hash = true
@@ -6,18 +11,40 @@ module Model
     return db
   end
 
+  # Find a user by id
+  #
+  # @param [Integer] user_id The ID of the user
+  #
+  # @return [Hash]
+  #   * :id [Integer] The ID of the user
+  #   * :username [String] The username of the user
+  #   * :pwd_digest [String] The hashed password of the user
   def get_user_by_id(user_id)
     db = connect_db()
 
     return db.execute("SELECT * FROM users WHERE id = ?", user_id).first
   end
 
+  # Find a user by username
+  #
+  # @param [String] username The username of the user
+  #
+  # @return [Hash]
+  #   * :id [Integer] The ID of the user
+  #   * :username [String] The username of the user
+  #   * :pwd_digest [String] The hashed password of the user
   def get_user_by_username(username)
     db = connect_db()
 
     return db.execute("SELECT * FROM users WHERE username = ?", username).first
   end
 
+  # Validate user credentials and set user_id to session
+  #
+  # @param [String] username Username
+  # @param [String] password Password
+  #
+  # @return [nil]
   def login_user(username, password)
     db = connect_db()
 
@@ -37,6 +64,8 @@ module Model
     else
       raise "Invalid username"
     end
+
+    return nil
   end
 
   def register_user(username, password, confirm_password)
