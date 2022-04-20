@@ -11,6 +11,5 @@ gem "sinatra-activerecord"
 gem "rake"
 gem "slim"
 gem "webrick"
-
-group :development do
-end
+gem "sinatra-websocket"
+gem "rufo"

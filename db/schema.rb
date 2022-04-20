@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 0) do
-
   create_table "chat_groups", force: :cascade do |t|
     t.text "name", null: false
     t.integer "creator", null: false
@@ -44,5 +43,4 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "user_id", null: false
     t.integer "group_role_id", null: false
   end
-
 end

@@ -1,24 +1,25 @@
-require "sinatra"
-require "sqlite3"
-require "slim"
-require "bcrypt"
-require "sinatra/reloader"
-require "./model.rb"
+require 'sinatra'
+require 'sqlite3'
+require 'slim'
+require 'bcrypt'
+require 'sinatra/reloader'
+require 'sinatra-websocket'
+require './model.rb'
 
 include Model
 
 enable :sessions
 
 public_routes = [
-  "/login",
-  "/signup",
-  "/users/new",
+  '/login',
+  '/signup',
+  '/users/new'
 ]
 
 before do
   # redirect to login if user is trying to access route that requires user authentication
   if !(public_routes.include? request.path_info) && !session[:user_id]
-    redirect("/login")
+    redirect('/login')
   elsif request.path_info.match(/\/groups+?\d+/)
 
     # check if user is a member of the group if route is /groups/:group_id
@@ -28,15 +29,15 @@ before do
     db = connect_db()
 
     # check if user is a member of group
-    group_user = db.execute("SELECT
+    group_user = db.execute('SELECT
               1
               FROM groups_users
               WHERE user_id = ?
-              AND group_id = ?", user_id, group_id)
+              AND group_id = ?', user_id, group_id)
 
     if (!group_user)
       # show error message: unauthorized
-      return "You are not a member of this group"
+      return 'You are not a member of this group'
     end
   end
 
@@ -74,11 +75,11 @@ end
 
 # AUTH
 
-get("/login") do
+get('/login') do
   slim(:login)
 end
 
-post("/login") do
+post('/login') do
   username = params[:username]
   password = params[:password]
 
@@ -87,22 +88,22 @@ post("/login") do
   rescue => exception
     return exception.message
   else
-    redirect("/")
+    redirect('/')
   end
 end
 
-get("/signup") do
+get('/signup') do
   slim(:signup)
 end
 
-post("/logout") do
+post('/logout') do
   session[:user_id] = nil
-  redirect("/login")
+  redirect('/login')
 end
 
 # USERS
 
-post("/users/new") do
+post('/users/new') do
   username = params[:username]
   password = params[:password]
   confirm_password = params[:confirm_password]
@@ -112,40 +113,40 @@ post("/users/new") do
   rescue => exception
     return exception.message
   else
-    redirect("/")
+    redirect('/')
   end
 end
 
 # GROUPS
 
-get("/") do
+get('/') do
   slim(:"groups/index")
 end
 
 # TODO: bestäm vad om /groups eller / ska användas för grupp index
-get("/groups") do
-  redirect("/")
+get('/groups') do
+  redirect('/')
 end
 
-post("/groups") do
+post('/groups') do
   group_name = params[:name]
   user_id = session[:user_id]
 
   create_group(user_id, group_name)
 
-  redirect("/")
+  redirect('/')
 end
 
-get("/groups/new") do
+get('/groups/new') do
   slim(:"groups/new")
 end
 
-get("/groups/:group_id") do
+get('/groups/:group_id') do
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_exists_in_group(group_id, user_id))
-    return "You are not a member of this group"
+    return 'You are not a member of this group'
   end
 
   group = get_group_by_id(group_id)
@@ -154,17 +155,17 @@ get("/groups/:group_id") do
   slim(:"groups/show", locals: { group: group, messages: messages })
 end
 
-get("/groups/:group_id/edit") do
+get('/groups/:group_id/edit') do
   slim(:"groups/edit")
 end
 
-post("/groups/:group_id/update") do
+post('/groups/:group_id/update') do
   group_id = params[:group_id]
   user_id = session[:user_id]
   title = params[:title]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   update_group(group_id, title)
@@ -172,29 +173,29 @@ post("/groups/:group_id/update") do
   redirect("/groups/#{group_id}")
 end
 
-post("/groups/:group_id/destroy") do
+post('/groups/:group_id/destroy') do
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   delete_group(group_id)
 
-  redirect("/groups")
+  redirect('/groups')
 end
 
 # MESSAGES
 
-post("/groups/:group_id/messages") do
+post('/groups/:group_id/messages') do
   if !request.websocket?
     group_id = params[:group_id]
     message = params[:message]
     user_id = session[:user_id]
 
     if (!user_exists_in_group(group_id, user_id))
-      return "You are not a member of this group"
+      return 'You are not a member of this group'
     end
 
     create_message_in_group(group_id, user_id, message)
@@ -209,7 +210,7 @@ post("/groups/:group_id/messages") do
   end
 end
 
-post("/groups/{group_id}/messages/{message_id}/update") do
+post('/groups/{group_id}/messages/{message_id}/update') do
   group_id = params[:group_id]
   message_id = params[:message_id]
   user_id = session[:user_id]
@@ -221,7 +222,7 @@ post("/groups/{group_id}/messages/{message_id}/update") do
   end
 end
 
-post("/groups/{group_id}/messages/:message_id/destroy") do
+post('/groups/{group_id}/messages/:message_id/destroy') do
   group_id = params[:group_id]
   message_id = params[:message_id]
   user_id = session[:user_id]
@@ -237,13 +238,13 @@ end
 
 # MEMBERS
 
-post("/groups/:group_id/members") do
+post('/groups/:group_id/members') do
   new_member_username = params[:new_member_username]
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   begin
@@ -255,12 +256,12 @@ post("/groups/:group_id/members") do
   redirect("/groups/#{group_id}/members/edit")
 end
 
-get("/groups/:group_id/members/edit") do
+get('/groups/:group_id/members/edit') do
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   # check if user is owner of group
@@ -270,7 +271,7 @@ get("/groups/:group_id/members/edit") do
 end
 
 # TODO: DELETE MEMBER
-post("/groups/{group_id}/members/{member_id}/destroy") do
+post('/groups/{group_id}/members/{member_id}/destroy') do
   group_id = params[:group_id]
   member_id = params[:member_id]
   user_id = session[:user_id]
@@ -291,12 +292,12 @@ end
 
 # ROLES
 
-get("/groups/:group_id/roles") do
+get('/groups/:group_id/roles') do
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   roles = get_roles_in_group(group_id)
@@ -304,23 +305,23 @@ get("/groups/:group_id/roles") do
   slim(:"roles/index", locals: { roles: roles })
 end
 
-get("/groups/:group_id/roles/new") do
+get('/groups/:group_id/roles/new') do
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   slim(:"roles/new")
 end
 
-post("/groups/:group_id/roles") do
+post('/groups/:group_id/roles') do
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   title = params[:title]
@@ -332,35 +333,35 @@ post("/groups/:group_id/roles") do
   redirect("/groups/#{group_id}/roles")
 end
 
-get("/groups/:group_id/roles/:role_id") do
+get('/groups/:group_id/roles/:role_id') do
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   slim(:"roles/show")
 end
 
-get("/groups/:group_id/roles/:role_id/edit") do
+get('/groups/:group_id/roles/:role_id/edit') do
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   slim(:"roles/edit")
 end
 
-post("/groups/:group_id/roles/:role_id/update") do
+post('/groups/:group_id/roles/:role_id/update') do
   group_id = params[:group_id]
   user_id = session[:user_id]
   role_id = params[:role_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   title = params[:title]
@@ -372,14 +373,14 @@ post("/groups/:group_id/roles/:role_id/update") do
   redirect("/groups/#{group_id}/roles")
 end
 
-post("/groups/:group_id/roles/:role_id/destroy") do
+post('/groups/:group_id/roles/:role_id/destroy') do
   # TODO: delete role and remove role from all users with the role
   role_id = params[:role_id]
   group_id = params[:group_id]
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   delete_role_in_group(group_id, role_id)
@@ -389,7 +390,7 @@ end
 
 # MEMBER ROLES RELATION
 
-post("/groups/:group_id/members/:user_id/role/update") do
+post('/groups/:group_id/members/:user_id/role/update') do
   role_id = params[:role_id]
   group_id = params[:group_id]
   member_user_id = params[:user_id]
@@ -397,7 +398,7 @@ post("/groups/:group_id/members/:user_id/role/update") do
   user_id = session[:user_id]
 
   if (!user_is_owner_of_group(group_id, user_id))
-    return "You are not the owner of this group"
+    return 'You are not the owner of this group'
   end
 
   update_role_of_user_in_group(group_id, member_user_id, role_id)
