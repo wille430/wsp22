@@ -29,6 +29,7 @@ a {
   grid-template:
     "gpnv main mbnv" 100vh
     / 12rem 1fr 12rem;
+    width: 100%;
 }
 
 main {
@@ -253,4 +254,25 @@ main {
   height: 2rem;
   border-radius: 0.25rem;
   padding-left: 0.25rem;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+}
+
+.adminSideNav {
+  background-color: var(--primary-dark);
+  padding: 0.5rem;
+  min-width: 9rem;
+  color: white;
+}
+
+.adminSideNav a {
+  color: white;
+}
+
+.adminSideNav > h4:not(:nth-child(1)) {
+  margin-top: 2rem;
+  margin-bottom: 0.25rem;
 }
