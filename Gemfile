@@ -6,3 +6,11 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem "sqlite3"
 gem "bcrypt"
+gem "activerecord"
+gem "sinatra-activerecord"
+gem "rake"
+gem "slim"
+gem "webrick"
+
+group :development do
+end
