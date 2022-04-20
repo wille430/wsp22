@@ -5,6 +5,8 @@ require "bcrypt"
 require "sinatra/reloader"
 require "./model.rb"
 
+include Model
+
 enable :sessions
 
 public_routes = [
@@ -186,17 +188,25 @@ end
 # MESSAGES
 
 post("/groups/:group_id/messages") do
-  group_id = params[:group_id]
-  message = params[:message]
-  user_id = session[:user_id]
+  if !request.websocket?
+    group_id = params[:group_id]
+    message = params[:message]
+    user_id = session[:user_id]
 
-  if (!user_exists_in_group(group_id, user_id))
-    return "You are not a member of this group"
+    if (!user_exists_in_group(group_id, user_id))
+      return "You are not a member of this group"
+    end
+
+    create_message_in_group(group_id, user_id, message)
+
+    redirect("/groups/#{group_id}")
+  else
+    request.websocket do |ws|
+      ws.onmessage do |msg|
+        EM.next_tick { settings.sockets.each { |s| s.send(msg) } }
+      end
+    end
   end
-
-  create_message_in_group(group_id, user_id, message)
-
-  redirect("/groups/#{group_id}")
 end
 
 post("/groups/{group_id}/messages/{message_id}/update") do
