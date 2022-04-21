@@ -99,10 +99,10 @@ module Model
     db.execute('INSERT INTO users (username, pwd_digest) VALUES (?, ?)', username, pwd_digest)
 
     # get id of new user
-    user_id = db.execute('SELECT id FROM users WHERE username = ?', username)
+    new_user = db.execute('SELECT id FROM users WHERE username = ?', username).first
 
     # save user_id in session
-    session[:user_id] = user_id
+    session[:user_id] = new_user['id']
   end
 
   # Create a chat group
@@ -118,8 +118,7 @@ module Model
     db.execute('INSERT INTO chat_groups (name, creator) VALUES (?, ?)', group_name, user_id)
     group_id = db.last_insert_row_id
 
-    # add users to the group
-    db.execute('INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)', user_id, group_id)
+    add_member_to_group(group_id, user_id)
   end
 
   # Find a chat group by id
@@ -317,11 +316,23 @@ module Model
   # Add a user as a member to a group
   #
   # @param [Integer] group_id The ID of the group
-  # @param [String] new_member_username The username of the user to add to the chat group
+  # @param [String] username_or_id The username or id of the user to add to the chat group
   #
   # @return [nil]
-  def add_member_to_group(group_id, new_member_username)
+  def add_member_to_group(group_id, username_or_id)
     db = connect_db()
+
+    new_member_username = username_or_id
+
+    if (username_or_id.is_a?(Integer))
+      user = db.execute('SELECT username FROM users WHERE id = ?', username_or_id).first
+
+      if (!user)
+        raise "No user with id #{username_or_id}"
+      else
+        new_member_username = user['username']
+      end
+    end
 
     # get the user id of user with username
     if (!username_exists(new_member_username))
@@ -337,7 +348,6 @@ module Model
       raise 'User is already a member of the group'
     end
 
-    puts "Adding user #{user_id} to group #{group_id}"
     db.execute('INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)', user_id, group_id)
 
     return nil

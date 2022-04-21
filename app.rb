@@ -24,28 +24,27 @@ before do
   # redirect to login if user is trying to access route that requires user authentication
   if !(public_routes.include? request.path_info) && !session[:user_id]
     redirect('/login')
-  elsif request.path_info.match(/\/groups+?\d+/)
-
-    # check if user is a member of the group if route is /groups/:group_id
-    group_id = params[:group_id]
-    user_id = session[:user_id]
-
-    db = connect_db()
-
-    # check if user is a member of group
-    group_user = db.execute('SELECT
-              1
-              FROM groups_users
-              WHERE user_id = ?
-              AND group_id = ?', user_id, group_id)
-
-    if (!group_user)
-      # show error message: unauthorized
-      return 'You are not a member of this group'
-    end
+  elsif public_routes.include? request.path_info && session[:user_id]
+    redirect('/')
   end
+end
 
-  # TODO: check if creator for certain routes
+before /(\/groups\/)\d+/ do
+  group_id = request.path_info[/(?<=\/groups\/)(\d+)/]
+  user_id = session[:user_id]
+
+  if (!user_exists_in_group(group_id, user_id))
+    redirect('/login?error=not-a-member')
+  end
+end
+
+before /(\/groups\/)\w+(\/(messages|roles|members|edit|update))/ do
+  group_id = request.path_info[/(?<=\/groups\/)(\d+)/]
+  user_id = session[:user_id]
+  # check if user is admin/creator
+  if (!user_is_owner_of_group(group_id, user_id))
+    redirect("/groups/#{group_id}?error=access-denied")
+  end
 end
 
 # START HELPERS
