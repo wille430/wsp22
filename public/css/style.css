@@ -1,9 +1,11 @@
 :root {
-  --primary-light: rgb(142, 184, 240);
-  --primary: rgb(85, 140, 212);
-  --primary-dark: rgb(42, 95, 165);
-  --primary-darkest: rgb(18, 72, 143);
-  
+  --primary-light: rgb(109, 118, 129);
+  --primary: rgb(61, 68, 78);
+  --primary-dark: rgb(48, 50, 53);
+  --primary-darkest: rgb(33, 34, 36);
+
+  --secondary: rgb(46, 116, 207);
+
   --border-radius: 0.25rem;
 }
 
@@ -24,12 +26,20 @@ a {
   color: black;
 }
 
+button,
+input[type="submit"] {
+  border: none;
+  padding: 0.25rem 0.25rem;
+  border-radius: 2rem;
+  background-color: white;
+}
+
 .layout {
   display: grid;
   grid-template:
     "gpnv main mbnv" 100vh
     / 12rem 1fr 12rem;
-    width: 100%;
+  width: 100%;
 }
 
 main {
@@ -90,15 +100,24 @@ main {
 
 .chat-input input[name="message"] {
   flex-grow: 1;
+  border-radius: 2rem;
+  padding-left: 1rem;
+}
+
+.chat-input input[type="submit"] {
+  padding: 0.25rem;
+  margin-left: 0.5rem;
 }
 
 .groups-nav {
   grid-area: gpnv;
   background-color: var(--primary);
   padding: 0.5rem;
+  color: white !important;
 }
 
-.group-card, .member-card {
+.group-card,
+.member-card {
   display: flex;
   align-items: center;
   padding: 0.25rem;
@@ -122,7 +141,7 @@ main {
 }
 
 .member-card > span:nth-child(1)::after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   left: 0;
@@ -153,20 +172,39 @@ main {
 
 .message-list {
   grid-area: msgl;
-  max-width: 32rem;
   width: 100%;
   margin: 0 auto;
 }
 
 .message {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 3.5rem;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "usr del"
+    "txt .";
   background-color: var(--primary);
   border-radius: var(--border-radius);
   color: white;
   padding: 0.5rem;
   margin-bottom: 1rem;
   min-height: 3rem;
+}
+
+.message-user {
+  grid-area: usr;
+}
+
+.message-text {
+  grid-area: txt;
+}
+
+.message-delete {
+  grid-area: del;
+}
+
+.message-delete > * {
+  width: 100%;
 }
 
 .memberOptions {
@@ -238,7 +276,12 @@ main {
 
 .login > section {
   width: 100%;
-  max-width: 16rem;
+  max-width: 24rem;
+  color: white;
+}
+
+.login > section > h2 {
+  margin-bottom: 1rem;
 }
 
 .loginForm {
@@ -246,14 +289,32 @@ main {
   flex-direction: column;
 }
 
+.loginForm > input[type="submit"] {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem 2rem;
+}
+
+.loginForm > * {
+  margin: 0.25rem;
+}
+
 .loginForm > * + * {
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 }
 
 .textInput {
   height: 2rem;
   border-radius: 0.25rem;
-  padding-left: 0.25rem;
+  padding-left: 1rem;
+  border-radius: 2rem;
+  border-width: 0.25rem;
+}
+
+.textInput:focus {
+  border-color: var(--secondary);
+  outline: var(--secondary);
 }
 
 body {

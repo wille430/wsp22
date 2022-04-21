@@ -48,10 +48,10 @@ div.layout
             ul.message-list#msgs
                 - messages.each do |message|
                     li.message id="#{message["id"]}"
-                        span #{message["username"]}
-                        span #{message["message"]}
+                        span.message-user #{message["username"]}
+                        span.message-text #{message["message"]}
                         - if session[:user_id] == message["user_id"] || group["creator"] == session[:user_id]
-                            form action="/groups/#{group["id"]}/messages/#{message["id"]}/destroy" method="post"   
+                            form.message-delete action="/groups/#{group["id"]}/messages/#{message["id"]}/destroy" method="post"   
                                 input type="submit" value="Delete"
         section.chat-input
             form#messageForm action="/groups/#{group["id"]}/messages" method="post" 
