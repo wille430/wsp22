@@ -24,8 +24,6 @@
 
   <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
 
-  <script type="text/javascript" charset="utf-8" src="js/custom.js"></script>
-
 
   </head>
   <body>
@@ -85,7 +83,16 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    Model module
 
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -103,7 +110,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#add_member_to_group-instance_method" title="#add_member_to_group (instance method)">#<strong>add_member_to_group</strong>(group_id, new_member_username)  &#x21d2; Object </a>
+      <a href="#add_member_to_group-instance_method" title="#add_member_to_group (instance method)">#<strong>add_member_to_group</strong>(group_id, new_member_username)  &#x21d2; nil </a>
     
 
     
@@ -117,7 +124,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Add a user as a member to a group.</div></span>
   
 </li>
 
@@ -125,7 +132,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#connect_db-instance_method" title="#connect_db (instance method)">#<strong>connect_db</strong>(path = &quot;db/database.db&quot;)  &#x21d2; SQLite3::Database </a>
+      <a href="#connect_db-instance_method" title="#connect_db (instance method)">#<strong>connect_db</strong>(path = &#39;db/database.db&#39;)  &#x21d2; SQLite3::Database </a>
     
 
     
@@ -139,9 +146,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Create an instance of the database.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'>Create an instance of the database.</div></span>
   
 </li>
 
@@ -149,7 +154,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_group-instance_method" title="#create_group (instance method)">#<strong>create_group</strong>(user_id, group_name)  &#x21d2; Object </a>
+      <a href="#create_group-instance_method" title="#create_group (instance method)">#<strong>create_group</strong>(user_id, group_name)  &#x21d2; nil </a>
     
 
     
@@ -163,7 +168,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Create a chat group.</div></span>
   
 </li>
 
@@ -171,7 +176,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_message_in_group-instance_method" title="#create_message_in_group (instance method)">#<strong>create_message_in_group</strong>(group_id, user_id, message)  &#x21d2; Object </a>
+      <a href="#create_message_in_group-instance_method" title="#create_message_in_group (instance method)">#<strong>create_message_in_group</strong>(group_id, user_id, message)  &#x21d2; nil </a>
     
 
     
@@ -185,7 +190,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Create a message in a chat group.</div></span>
   
 </li>
 
@@ -193,7 +198,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_role-instance_method" title="#create_role (instance method)">#<strong>create_role</strong>(group_id, title, can_delete, can_kick)  &#x21d2; Object </a>
+      <a href="#create_role-instance_method" title="#create_role (instance method)">#<strong>create_role</strong>(group_id, title, can_delete, can_kick)  &#x21d2; nil </a>
     
 
     
@@ -207,7 +212,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Create a role in a chat group.</div></span>
   
 </li>
 
@@ -215,7 +220,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_group-instance_method" title="#delete_group (instance method)">#<strong>delete_group</strong>(group_id)  &#x21d2; Object </a>
+      <a href="#delete_group-instance_method" title="#delete_group (instance method)">#<strong>delete_group</strong>(group_id)  &#x21d2; nil </a>
     
 
     
@@ -229,7 +234,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Delete group by id.</div></span>
   
 </li>
 
@@ -237,7 +242,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_member-instance_method" title="#delete_member (instance method)">#<strong>delete_member</strong>(member_id, group_id)  &#x21d2; Object </a>
+      <a href="#delete_member-instance_method" title="#delete_member (instance method)">#<strong>delete_member</strong>(member_id, group_id)  &#x21d2; nil </a>
     
 
     
@@ -251,7 +256,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Delete a user from a chat group.</div></span>
   
 </li>
 
@@ -259,7 +264,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_message-instance_method" title="#delete_message (instance method)">#<strong>delete_message</strong>(group_id, message_id, user_id)  &#x21d2; Object </a>
+      <a href="#delete_message-instance_method" title="#delete_message (instance method)">#<strong>delete_message</strong>(group_id, message_id, user_id)  &#x21d2; nil </a>
     
 
     
@@ -273,7 +278,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Delete a message by id.</div></span>
   
 </li>
 
@@ -281,7 +286,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_role_in_group-instance_method" title="#delete_role_in_group (instance method)">#<strong>delete_role_in_group</strong>(group_id, role_id)  &#x21d2; Object </a>
+      <a href="#delete_role_in_group-instance_method" title="#delete_role_in_group (instance method)">#<strong>delete_role_in_group</strong>(group_id, role_id)  &#x21d2; nil </a>
     
 
     
@@ -295,7 +300,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Delete a group role.</div></span>
   
 </li>
 
@@ -303,7 +308,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_group_by_id-instance_method" title="#get_group_by_id (instance method)">#<strong>get_group_by_id</strong>(group_id)  &#x21d2; Object </a>
+      <a href="#get_group_by_id-instance_method" title="#get_group_by_id (instance method)">#<strong>get_group_by_id</strong>(group_id)  &#x21d2; Hash </a>
     
 
     
@@ -317,7 +322,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Find a chat group by id.</div></span>
   
 </li>
 
@@ -325,7 +330,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_groups_of_user-instance_method" title="#get_groups_of_user (instance method)">#<strong>get_groups_of_user</strong>(user_id)  &#x21d2; Object </a>
+      <a href="#get_groups_of_user-instance_method" title="#get_groups_of_user (instance method)">#<strong>get_groups_of_user</strong>(user_id)  &#x21d2; Array&lt;Hash&gt; </a>
     
 
     
@@ -339,7 +344,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Get all the groups that the user is a member of.</div></span>
   
 </li>
 
@@ -347,7 +352,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_members_in_group-instance_method" title="#get_members_in_group (instance method)">#<strong>get_members_in_group</strong>(group_id)  &#x21d2; Object </a>
+      <a href="#get_members_in_group-instance_method" title="#get_members_in_group (instance method)">#<strong>get_members_in_group</strong>(group_id)  &#x21d2; Array&lt;Hash&gt; </a>
     
 
     
@@ -361,7 +366,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Returns all members in a group.</div></span>
   
 </li>
 
@@ -369,7 +374,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_message_by_id-instance_method" title="#get_message_by_id (instance method)">#<strong>get_message_by_id</strong>(id)  &#x21d2; Object </a>
+      <a href="#get_message_by_id-instance_method" title="#get_message_by_id (instance method)">#<strong>get_message_by_id</strong>(id)  &#x21d2; Hash </a>
     
 
     
@@ -383,7 +388,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Get message by id.</div></span>
   
 </li>
 
@@ -391,7 +396,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_messages_in_group-instance_method" title="#get_messages_in_group (instance method)">#<strong>get_messages_in_group</strong>(group_id)  &#x21d2; Object </a>
+      <a href="#get_messages_in_group-instance_method" title="#get_messages_in_group (instance method)">#<strong>get_messages_in_group</strong>(group_id)  &#x21d2; Array&lt;Hash&gt; </a>
     
 
     
@@ -405,7 +410,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Get all messages in a group by id.</div></span>
   
 </li>
 
@@ -413,7 +418,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_role-instance_method" title="#get_role (instance method)">#<strong>get_role</strong>(role_id)  &#x21d2; Object </a>
+      <a href="#get_role-instance_method" title="#get_role (instance method)">#<strong>get_role</strong>(role_id)  &#x21d2; Hash </a>
     
 
     
@@ -427,7 +432,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Find a role by id.</div></span>
   
 </li>
 
@@ -435,7 +440,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_roles_in_group-instance_method" title="#get_roles_in_group (instance method)">#<strong>get_roles_in_group</strong>(group_id)  &#x21d2; Object </a>
+      <a href="#get_roles_in_group-instance_method" title="#get_roles_in_group (instance method)">#<strong>get_roles_in_group</strong>(group_id)  &#x21d2; Array&lt;Hash&gt; </a>
     
 
     
@@ -449,7 +454,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Find all roles in a chat group.</div></span>
   
 </li>
 
@@ -471,9 +476,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Find a user by id.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'>Find a user by id.</div></span>
   
 </li>
 
@@ -495,9 +498,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Find a user by username.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'>Find a user by username.</div></span>
   
 </li>
 
@@ -519,9 +520,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Validate user credentials and set user_id to session.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'>Validate user credentials and set user_id to session.</div></span>
   
 </li>
 
@@ -529,7 +528,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#register_user-instance_method" title="#register_user (instance method)">#<strong>register_user</strong>(username, password, confirm_password)  &#x21d2; Object </a>
+      <a href="#register_user-instance_method" title="#register_user (instance method)">#<strong>register_user</strong>(username, password, confirm_password)  &#x21d2; nil </a>
     
 
     
@@ -543,7 +542,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Create a user from username and password and store user_id in session.</div></span>
   
 </li>
 
@@ -551,7 +550,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#update_group-instance_method" title="#update_group (instance method)">#<strong>update_group</strong>(group_id, name)  &#x21d2; Object </a>
+      <a href="#update_group-instance_method" title="#update_group (instance method)">#<strong>update_group</strong>(group_id, name)  &#x21d2; nil </a>
     
 
     
@@ -565,7 +564,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Update name of a char group by id.</div></span>
   
 </li>
 
@@ -573,7 +572,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#update_message_in_group-instance_method" title="#update_message_in_group (instance method)">#<strong>update_message_in_group</strong>(group_id)  &#x21d2; Object </a>
+      <a href="#update_role-instance_method" title="#update_role (instance method)">#<strong>update_role</strong>(role_id, title, can_delete, can_kick)  &#x21d2; nil </a>
     
 
     
@@ -587,7 +586,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Update a role.</div></span>
   
 </li>
 
@@ -595,7 +594,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#update_role-instance_method" title="#update_role (instance method)">#<strong>update_role</strong>(role_id, title, can_delete, can_kick)  &#x21d2; Object </a>
+      <a href="#update_role_of_user_in_group-instance_method" title="#update_role_of_user_in_group (instance method)">#<strong>update_role_of_user_in_group</strong>(group_id, user_id, role_id)  &#x21d2; nil </a>
     
 
     
@@ -609,7 +608,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Assign a group role to a member in a char group.</div></span>
   
 </li>
 
@@ -617,7 +616,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#update_role_of_user_in_group-instance_method" title="#update_role_of_user_in_group (instance method)">#<strong>update_role_of_user_in_group</strong>(group_id, user_id, role_id)  &#x21d2; Object </a>
+      <a href="#user_can_kick-instance_method" title="#user_can_kick (instance method)">#<strong>user_can_kick</strong>(user_id, member_id, group_id)  &#x21d2; Boolean </a>
     
 
     
@@ -631,7 +630,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Returns whether or not a user can kick another user in a chat group.</div></span>
   
 </li>
 
@@ -639,7 +638,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#user_can_kick-instance_method" title="#user_can_kick (instance method)">#<strong>user_can_kick</strong>(user_id, member_id, group_id)  &#x21d2; Object </a>
+      <a href="#user_exists_in_group-instance_method" title="#user_exists_in_group (instance method)">#<strong>user_exists_in_group</strong>(group_id, user_id)  &#x21d2; Boolean </a>
     
 
     
@@ -653,7 +652,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Returns whether or not a user is already a member of a group.</div></span>
   
 </li>
 
@@ -661,7 +660,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#user_exists_in_group-instance_method" title="#user_exists_in_group (instance method)">#<strong>user_exists_in_group</strong>(group_id, user_id)  &#x21d2; Object </a>
+      <a href="#user_is_owner_of_group-instance_method" title="#user_is_owner_of_group (instance method)">#<strong>user_is_owner_of_group</strong>(group_id, user_id)  &#x21d2; Boolean </a>
     
 
     
@@ -675,7 +674,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Returns whether or not a user is the creator of a chat group.</div></span>
   
 </li>
 
@@ -683,7 +682,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#user_is_owner_of_group-instance_method" title="#user_is_owner_of_group (instance method)">#<strong>user_is_owner_of_group</strong>(group_id, user_id)  &#x21d2; Object </a>
+      <a href="#username_exists-instance_method" title="#username_exists (instance method)">#<strong>username_exists</strong>(username)  &#x21d2; Boolean </a>
     
 
     
@@ -697,29 +696,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#username_exists-instance_method" title="#username_exists (instance method)">#<strong>username_exists</strong>(username)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Returns whether or not a username is already taken.</div></span>
   
 </li>
 
@@ -736,71 +713,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="add_member_to_group-instance_method">
   
-    #<strong>add_member_to_group</strong>(group_id, new_member_username)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245
-246
-247
-248
-249
-250</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 231</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_add_member_to_group'>add_member_to_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_new_member_username'>new_member_username</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='comment'># get the user id of user with username
-</span>  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_username_exists'><span class='object_link'><a href="#username_exists-instance_method" title="Model#username_exists (method)">username_exists</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_new_member_username'>new_member_username</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='comment'># display error message
-</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No user found with username </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_new_member_username'>new_member_username</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_get_user_by_username'><span class='object_link'><a href="#get_user_by_username-instance_method" title="Model#get_user_by_username (method)">get_user_by_username</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_new_member_username'>new_member_username</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_user_exists_in_group'><span class='object_link'><a href="#user_exists_in_group-instance_method" title="Model#user_exists_in_group (method)">user_exists_in_group</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='comment'># display error message
-</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>User is already a member of the group</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Adding user </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> to group </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="connect_db-instance_method">
-  
-    #<strong>connect_db</strong>(path = &quot;db/database.db&quot;)  &#x21d2; <tt>SQLite3::Database</tt> 
+    #<strong>add_member_to_group</strong>(group_id, new_member_username)  &#x21d2; <tt>nil</tt> 
   
 
   
@@ -808,9 +721,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Create an instance of the database</p>
-
+    Add a user as a member to a group
 
   </div>
 </div>
@@ -820,759 +731,7 @@
   
     <li>
       
-        <span class='name'>path</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>&quot;db/database.db&quot;</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>The path to the database file</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>SQLite3::Database</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-7
-8
-9
-10
-11
-12</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 7</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_connect_db'>connect_db</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>db/database.db</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='const'>SQLite3</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_results_as_hash'>results_as_hash</span> <span class='op'>=</span> <span class='kw'>true</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_db'>db</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="create_group-instance_method">
-  
-    #<strong>create_group</strong>(user_id, group_name)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 100</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_create_group'>create_group</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_name'>group_name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='comment'># create group
-</span>  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO chat_groups (name, creator) VALUES (?, ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_name'>group_name</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_group_id'>group_id</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_last_insert_row_id'>last_insert_row_id</span>
-
-  <span class='comment'># add users to the group
-</span>  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="create_message_in_group-instance_method">
-  
-    #<strong>create_message_in_group</strong>(group_id, user_id, message)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-132
-133
-134
-135
-136
-137</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 132</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_create_message_in_group'>create_message_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='comment'># create message
-</span>  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO messages (message, group_id, user_id) VALUES (?, ?, ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="create_role-instance_method">
-  
-    #<strong>create_role</strong>(group_id, title, can_delete, can_kick)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-322
-323
-324
-325
-326</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 322</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_create_role'>create_role</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_can_delete'>can_delete</span><span class='comma'>,</span> <span class='id identifier rubyid_can_kick'>can_kick</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO group_roles (group_id, title, canDelete, canKick) VALUES (?, ?, ?, ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_can_delete'>can_delete</span><span class='comma'>,</span> <span class='id identifier rubyid_can_kick'>can_kick</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="delete_group-instance_method">
-  
-    #<strong>delete_group</strong>(group_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-126
-127
-128
-129
-130</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 126</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_delete_group'>delete_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DELETE FROM chat_groups WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="delete_member-instance_method">
-  
-    #<strong>delete_member</strong>(member_id, group_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-276
-277
-278
-279
-280
-281
-282
-283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 276</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_delete_member'>delete_member</span><span class='lparen'>(</span><span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_member'>member</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM groups_users WHERE user_id = ? AND group_id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_member'>member</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No member with id </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_member_id'>member_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> was found</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_member'>member</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-
-  <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_get_group_by_id'><span class='object_link'><a href="#get_group_by_id-instance_method" title="Model#get_group_by_id (method)">get_group_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-
-  <span class='comment'># ska ej kunna ta bort skaparen av gruppen
-</span>  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_group'>group</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>creator</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_print'>print</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Deleting user </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_member_id'>member_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> from group </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='comment'># delete user group role relation
-</span>    <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DELETE FROM users_group_roles WHERE user_id = ? AND group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-
-    <span class='comment'># delete user group relation
-</span>    <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DELETE FROM groups_users WHERE user_id = ? AND group_id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="delete_message-instance_method">
-  
-    #<strong>delete_message</strong>(group_id, message_id, user_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 173</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_delete_message'>delete_message</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_message_id'>message_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_get_message_by_id'><span class='object_link'><a href="#get_message_by_id-instance_method" title="Model#get_message_by_id (method)">get_message_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_message_id'>message_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_get_group_by_id'><span class='object_link'><a href="#get_group_by_id-instance_method" title="Model#get_group_by_id (method)">get_group_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-
-  <span class='comment'># user is not group owner or creator of the message
-</span>  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_group'>group</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>creator</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You don&#39;t have permissions to delete message with id </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_message_id'>message_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DELETE FROM messages WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_message_id'>message_id</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="delete_role_in_group-instance_method">
-  
-    #<strong>delete_role_in_group</strong>(group_id, role_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-394
-395
-396
-397
-398
-399
-400
-401
-402</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 394</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_delete_role_in_group'>delete_role_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DELETE FROM group_roles, users_group_roles
-              FROM group_roles
-              INNER JOIN users_group_roles ON group_roles.id = users_group_roles.group_role_id
-              WHERE group_roles.id = ?
-              AND group_roles.group_id</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_group_by_id-instance_method">
-  
-    #<strong>get_group_by_id</strong>(group_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-111
-112
-113
-114
-115</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 111</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_group_by_id'>get_group_by_id</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM chat_groups WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_group'>group</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_groups_of_user-instance_method">
-  
-    #<strong>get_groups_of_user</strong>(user_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 187</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_groups_of_user'>get_groups_of_user</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span>
-
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-    <span class='comment'># return empty if not logged in
-</span>    <span class='kw'>return</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span>
-
-  <span class='comment'># get groups where user is a member of
-</span>  <span class='id identifier rubyid_groups'>groups</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT 
-                        *,
-                        chat_groups.id as id
-                      FROM
-                        chat_groups
-                      INNER JOIN groups_users
-                      ON (chat_groups.id = groups_users.group_id)
-                      WHERE groups_users.user_id = ?
-                      </span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_groups'>groups</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_members_in_group-instance_method">
-  
-    #<strong>get_members_in_group</strong>(group_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-252
-253
-254
-255
-256
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 252</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_members_in_group'>get_members_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_members'>members</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT
-                          users.id,
-                          users.username,
-                          users_group_roles.group_role_id
-                        FROM
-                          users
-                        INNER JOIN groups_users
-                          ON groups_users.user_id = users.id
-                        LEFT JOIN users_group_roles
-                          ON users_group_roles.user_id = users.id
-                          AND users_group_roles.group_role_id = (SELECT id FROM group_roles WHERE group_roles.group_id = ?)
-                        WHERE groups_users.group_id = ?
-                        </span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_members'>members</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_message_by_id-instance_method">
-  
-    #<strong>get_message_by_id</strong>(id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 156</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_message_by_id'>get_message_by_id</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT
-                          *
-                        FROM messages
-                        LEFT JOIN users
-                        ON users.id = messages.user_id
-                        WHERE messages.id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_message'>message</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_messages_in_group-instance_method">
-  
-    #<strong>get_messages_in_group</strong>(group_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 139</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_messages_in_group'>get_messages_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='comment'># get messages from group with sender username
-</span>  <span class='id identifier rubyid_messages'>messages</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT 
-                          messages.id,
-                          users.username,
-                          messages.message,
-                          messages.user_id
-                        FROM messages
-                        LEFT JOIN users
-                        ON messages.user_id = users.id
-                        WHERE group_id = ?
-                        </span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_messages'>messages</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_role-instance_method">
-  
-    #<strong>get_role</strong>(role_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-328
-329
-330
-331
-332
-333
-334
-335
-336
-337</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 328</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_role'>get_role</span><span class='lparen'>(</span><span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='kw'>nil</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_role'>role</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM group_roles WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_role'>role</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_roles_in_group-instance_method">
-  
-    #<strong>get_roles_in_group</strong>(group_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-339
-340
-341
-342
-343
-344
-345</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 339</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_roles_in_group'>get_roles_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_group_roles'>group_roles</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM group_roles WHERE group_id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_group_roles'>group_roles</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_user_by_id-instance_method">
-  
-    #<strong>get_user_by_id</strong>(user_id)  &#x21d2; <tt>Hash</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Find a user by id</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>user_id</span>
+        <span class='name'>group_id</span>
       
       
         <span class='type'>(<tt>Integer</tt>)</span>
@@ -1580,89 +739,13 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The ID of the user</p>
-</div>
+        <div class='inline'>The ID of the group</div>
       
     </li>
   
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
     <li>
       
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><ul><li>
-<p>:id [Integer] The ID of the user</p>
-</li><li>
-<p>:username [String] The username of the user</p>
-</li><li>
-<p>:pwd_digest [String] The hashed password of the user</p>
-</li></ul>
-</div>
-      
-    </li>
-  
-</ul>
-
-
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-22
-23
-24
-25
-26</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 22</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_user_by_id'>get_user_by_id</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM users WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="get_user_by_username-instance_method">
-  
-    #<strong>get_user_by_username</strong>(username)  &#x21d2; <tt>Hash</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Find a user by username</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>username</span>
+        <span class='name'>new_member_username</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -1670,115 +753,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The username of the user</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><ul><li>
-<p>:id [Integer] The ID of the user</p>
-</li><li>
-<p>:username [String] The username of the user</p>
-</li><li>
-<p>:pwd_digest [String] The hashed password of the user</p>
-</li></ul>
-</div>
-      
-    </li>
-  
-</ul>
-
-
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-36
-37
-38
-39
-40</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 36</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_get_user_by_username'>get_user_by_username</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM users WHERE username = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="login_user-instance_method">
-  
-    #<strong>login_user</strong>(username, password)  &#x21d2; <tt>nil</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Validate user credentials and set user_id to session</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>username</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Username</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>password</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Password</p>
-</div>
+        <div class='inline'>The username of the user to add to the chat group</div>
       
     </li>
   
@@ -1798,7 +773,115 @@
   
 </ul>
 
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
+
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 323</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_member_to_group'>add_member_to_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_new_member_username'>new_member_username</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='comment'># get the user id of user with username
+</span>  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_username_exists'><span class='object_link'><a href="#username_exists-instance_method" title="Model#username_exists (method)">username_exists</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_new_member_username'>new_member_username</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='comment'># display error message
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No user found with username </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_new_member_username'>new_member_username</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_get_user_by_username'><span class='object_link'><a href="#get_user_by_username-instance_method" title="Model#get_user_by_username (method)">get_user_by_username</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_new_member_username'>new_member_username</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_user_exists_in_group'><span class='object_link'><a href="#user_exists_in_group-instance_method" title="Model#user_exists_in_group (method)">user_exists_in_group</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='comment'># display error message
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>User is already a member of the group</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Adding user </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> to group </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group_id'>group_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="connect_db-instance_method">
+  
+    #<strong>connect_db</strong>(path = &#39;db/database.db&#39;)  &#x21d2; <tt>SQLite3::Database</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Create an instance of the database
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;db/database.db&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>The path to the database file</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>SQLite3::Database</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1806,7 +889,1651 @@
       <pre class="lines">
 
 
-48
+8
+9
+10
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_connect_db'>connect_db</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>db/database.db</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='const'>SQLite3</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_results_as_hash'>results_as_hash</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_db'>db</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_group-instance_method">
+  
+    #<strong>create_group</strong>(user_id, group_name)  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Create a chat group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The id of the user creator</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The name of the group</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 114</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_group'>create_group</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_name'>group_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='comment'># create group
+</span>  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO chat_groups (name, creator) VALUES (?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_name'>group_name</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_group_id'>group_id</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_last_insert_row_id'>last_insert_row_id</span>
+
+  <span class='comment'># add users to the group
+</span>  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_message_in_group-instance_method">
+  
+    #<strong>create_message_in_group</strong>(group_id, user_id, message)  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Create a message in a chat group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The id of the group</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The id of the user</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>message</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The text that the user sent</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+172
+173
+174
+175
+176
+177
+178
+179
+180</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 172</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_message_in_group'>create_message_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='comment'># create message
+</span>  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO messages (message, group_id, user_id) VALUES (?, ?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_message_id'>message_id</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_last_insert_row_id'>last_insert_row_id</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_get_message_by_id'><span class='object_link'><a href="#get_message_by_id-instance_method" title="Model#get_message_by_id (method)">get_message_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_message_id'>message_id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_role-instance_method">
+  
+    #<strong>create_role</strong>(group_id, title, can_delete, can_kick)  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Create a role in a chat group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the group</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>title</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The name of the role</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>can_delete</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>True if the role should allow deletion of messages</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>can_kick</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>True if the role should allow kicking of members</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+446
+447
+448
+449
+450
+451</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 446</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_role'>create_role</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_can_delete'>can_delete</span><span class='comma'>,</span> <span class='id identifier rubyid_can_kick'>can_kick</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO group_roles (group_id, title, canDelete, canKick) VALUES (?, ?, ?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_can_delete'>can_delete</span><span class='comma'>,</span> <span class='id identifier rubyid_can_kick'>can_kick</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_group-instance_method">
+  
+    #<strong>delete_group</strong>(group_id)  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Delete group by id
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The id of the group</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+159
+160
+161
+162
+163</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 159</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_group'>delete_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM chat_groups WHERE id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_member-instance_method">
+  
+    #<strong>delete_member</strong>(member_id, group_id)  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Delete a user from a chat group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>member_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the user to kick</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the group</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 384</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_member'>delete_member</span><span class='lparen'>(</span><span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM groups_users WHERE user_id = ? AND group_id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_member'>member</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No member with id </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_member_id'>member_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> was found</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_member'>member</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>user_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_get_group_by_id'><span class='object_link'><a href="#get_group_by_id-instance_method" title="Model#get_group_by_id (method)">get_group_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+
+  <span class='comment'># ska ej kunna ta bort skaparen av gruppen
+</span>  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_group'>group</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>creator</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='rparen'>)</span>
+    <span class='comment'># delete user group role relation
+</span>    <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM users_group_roles WHERE user_id = ? AND group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+
+    <span class='comment'># delete user group relation
+</span>    <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM groups_users WHERE user_id = ? AND group_id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_message-instance_method">
+  
+    #<strong>delete_message</strong>(group_id, message_id, user_id)  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Delete a message by id
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>message_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the message</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 240</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_message'>delete_message</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_message_id'>message_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_get_message_by_id'><span class='object_link'><a href="#get_message_by_id-instance_method" title="Model#get_message_by_id (method)">get_message_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_message_id'>message_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_get_group_by_id'><span class='object_link'><a href="#get_group_by_id-instance_method" title="Model#get_group_by_id (method)">get_group_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+
+  <span class='comment'># user is not group owner or creator of the message
+</span>  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>user_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_group'>group</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>creator</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You don&#39;t have permissions to delete message with id </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_message_id'>message_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM messages WHERE id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_message_id'>message_id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_role_in_group-instance_method">
+  
+    #<strong>delete_role_in_group</strong>(group_id, role_id)  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Delete a group role
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the group</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>role_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the role to delete</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 564</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_role_in_group'>delete_role_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM group_roles, users_group_roles
+              FROM group_roles
+              INNER JOIN users_group_roles ON group_roles.id = users_group_roles.group_role_id
+              WHERE group_roles.id = ?
+              AND group_roles.group_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_group_by_id-instance_method">
+  
+    #<strong>get_group_by_id</strong>(group_id)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Find a chat group by id
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The id of the group</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>* :id [Integer] The ID of the chat group
+* :name [String] The name of the chat group
+* :creator [Integer] The ID of the chat group</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+133
+134
+135
+136
+137</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 133</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_group_by_id'>get_group_by_id</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM chat_groups WHERE id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_groups_of_user-instance_method">
+  
+    #<strong>get_groups_of_user</strong>(user_id)  &#x21d2; <tt>Array&lt;Hash&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Get all the groups that the user is a member of
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the user</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Hash&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>* :id [Integer] The ID of the user
+* :username [String] The username
+* :pwd_digest [String] The hashed password</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 262</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_groups_of_user'>get_groups_of_user</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span>
+
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='comment'># return empty if not logged in
+</span>    <span class='kw'>return</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># get groups where user is a member of
+</span>  <span class='id identifier rubyid_groups'>groups</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT 
+                        *,
+                        chat_groups.id as id
+                      FROM
+                        chat_groups
+                      INNER JOIN groups_users
+                      ON (chat_groups.id = groups_users.group_id)
+                      WHERE groups_users.user_id = ?
+                      </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_groups'>groups</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_members_in_group-instance_method">
+  
+    #<strong>get_members_in_group</strong>(group_id)  &#x21d2; <tt>Array&lt;Hash&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns all members in a group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the group</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Hash&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>* :id [Integer] The ID of the user
+* :username [String] The username of the user
+* :pwd_digest [String] The hashed password of the user</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 354</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_members_in_group'>get_members_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_members'>members</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT
+                          users.id,
+                          users.username,
+                          users_group_roles.group_role_id
+                        FROM
+                          users
+                        INNER JOIN groups_users
+                          ON groups_users.user_id = users.id
+                        LEFT JOIN users_group_roles
+                          ON users_group_roles.user_id = users.id
+                          AND users_group_roles.group_role_id = (SELECT id FROM group_roles WHERE group_roles.group_id = ?)
+                        WHERE groups_users.group_id = ?
+                        </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_members'>members</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_message_by_id-instance_method">
+  
+    #<strong>get_message_by_id</strong>(id)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Get message by id
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the message</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>* :id [Integer] The ID of the message
+* :message [String] The text message
+* :group_id [Integer] The ID of the group where the message was posted
+* :user_id [Integer] The ID of the user that sent the message</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 217</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_message_by_id'>get_message_by_id</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT
+                          messages.*,
+                          users.username
+                        FROM messages
+                        LEFT JOIN users
+                        ON users.id = messages.user_id
+                        WHERE messages.id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_message'>message</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_messages_in_group-instance_method">
+  
+    #<strong>get_messages_in_group</strong>(group_id)  &#x21d2; <tt>Array&lt;Hash&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Get all messages in a group by id
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The id of the group</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Hash&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>* :id [Integer] The ID of the message
+* :message [String] The text message
+* :group_id [Integer] The ID of the group where the message was posted
+* :user_id [Integer] The ID of the user that sent the message</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 191</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_messages_in_group'>get_messages_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='comment'># get messages from group with sender username
+</span>  <span class='id identifier rubyid_messages'>messages</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT 
+                          messages.id,
+                          users.username,
+                          messages.message,
+                          messages.user_id
+                        FROM messages
+                        LEFT JOIN users
+                        ON messages.user_id = users.id
+                        WHERE group_id = ?
+                        </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_messages'>messages</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_role-instance_method">
+  
+    #<strong>get_role</strong>(role_id)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Find a role by id
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>role_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the role to find</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>* :id [Integer] The ID of the role
+* :group_id [Integer] The ID of the group
+* :title [String] The name of the role
+* :canDelete [String] &quot;on&quot; if the user can delete messages
+* :canKick [String] &quot;on&quot; if the user can kick members</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 463</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_role'>get_role</span><span class='lparen'>(</span><span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_role'>role</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM group_roles WHERE id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_role'>role</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_roles_in_group-instance_method">
+  
+    #<strong>get_roles_in_group</strong>(group_id)  &#x21d2; <tt>Array&lt;Hash&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Find all roles in a chat group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the group</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Hash&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>* :id [Integer] The ID of the role
+* :group_id [Integer] The ID of the group
+* :title [String] The name of the role
+* :canDelete [String] &quot;on&quot; if the user can delete messages
+* :canKick [String] &quot;on&quot; if the user can kick members</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+484
+485
+486
+487
+488
+489
+490</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 484</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_roles_in_group'>get_roles_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_group_roles'>group_roles</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM group_roles WHERE group_id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_group_roles'>group_roles</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_user_by_id-instance_method">
+  
+    #<strong>get_user_by_id</strong>(user_id)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Find a user by id
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the user</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>* :id [Integer] The ID of the user
+* :username [String] The username of the user
+* :pwd_digest [String] The hashed password of the user</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_user_by_id'>get_user_by_id</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM users WHERE id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_user_by_username-instance_method">
+  
+    #<strong>get_user_by_username</strong>(username)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Find a user by username
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The username of the user</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>* :id [Integer] The ID of the user
+* :username [String] The username of the user
+* :pwd_digest [String] The hashed password of the user</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_user_by_username'>get_user_by_username</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM users WHERE username = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="login_user-instance_method">
+  
+    #<strong>login_user</strong>(username, password)  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Validate user credentials and set user_id to session
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Username</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Password</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
 49
 50
 51
@@ -1827,29 +2554,30 @@
 66
 67
 68
-69</pre>
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_login_user'>login_user</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
 
   <span class='comment'># get user with username
-</span>  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM users WHERE username = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+</span>  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM users WHERE username = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span>
     <span class='comment'># compare password
-</span>    <span class='id identifier rubyid_pwd_digest'>pwd_digest</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pwd_digest</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+</span>    <span class='id identifier rubyid_pwd_digest'>pwd_digest</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pwd_digest</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 
     <span class='kw'>if</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_pwd_digest'>pwd_digest</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_password'>password</span>
       <span class='comment'># login user
-</span>      <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+</span>      <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid password or username</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Invalid password or username</span><span class='tstring_end'>&#39;</span></span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid username</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Invalid username</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
 
   <span class='kw'>return</span> <span class='kw'>nil</span>
@@ -1862,26 +2590,86 @@
       <div class="method_details ">
   <h3 class="signature " id="register_user-instance_method">
   
-    #<strong>register_user</strong>(username, password, confirm_password)  &#x21d2; <tt>Object</tt> 
+    #<strong>register_user</strong>(username, password, confirm_password)  &#x21d2; <tt>nil</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Create a user from username and password and store user_id in session
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Username</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Password</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>confirm_password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Password confirmation. Should equal passowrd.</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-71
-72
-73
-74
-75
-76
-77
-78
 79
 80
 81
@@ -1901,35 +2689,43 @@
 95
 96
 97
-98</pre>
+98
+99
+100
+101
+102
+103
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 79</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_user'>register_user</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='comma'>,</span> <span class='id identifier rubyid_confirm_password'>confirm_password</span><span class='rparen'>)</span>
   <span class='comment'># validate password
 </span>  <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span> <span class='op'>==</span> <span class='id identifier rubyid_confirm_password'>confirm_password</span><span class='rparen'>)</span>
     <span class='comment'># show error message: passwords not matching
-</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Passwords not matching</span><span class='tstring_end'>&quot;</span></span>
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Passwords not matching</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
 
   <span class='comment'># check for existing users
-</span>  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM users WHERE username = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+</span>  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM users WHERE username = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span>
     <span class='comment'># show error message: user exists already
-</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Username is already in use</span><span class='tstring_end'>&quot;</span></span>
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Username is already in use</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
 
   <span class='comment'># one-way encrypt password
 </span>  <span class='id identifier rubyid_pwd_digest'>pwd_digest</span> <span class='op'>=</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
 
   <span class='comment'># create new user
-</span>  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO users (username, pwd_digest) VALUES (?, ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_pwd_digest'>pwd_digest</span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO users (username, pwd_digest) VALUES (?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_pwd_digest'>pwd_digest</span><span class='rparen'>)</span>
 
   <span class='comment'># get id of new user
-</span>  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT id FROM users WHERE username = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT id FROM users WHERE username = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
 
   <span class='comment'># save user_id in session
 </span>  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user_id'>user_id</span>
@@ -1942,68 +2738,92 @@
       <div class="method_details ">
   <h3 class="signature " id="update_group-instance_method">
   
-    #<strong>update_group</strong>(group_id, name)  &#x21d2; <tt>Object</tt> 
+    #<strong>update_group</strong>(group_id, name)  &#x21d2; <tt>nil</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Update name of a char group by id
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The id of the group</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The new name of the group</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-117
-118
-119
-120
-121
-122
-123
-124</pre>
+145
+146
+147
+148
+149
+150
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 117</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_group'>update_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UPDATE
+  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UPDATE
                 chat_groups
               SET name = ?
-              WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+              WHERE id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="update_message_in_group-instance_method">
-  
-    #<strong>update_message_in_group</strong>(group_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-169
-170
-171</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 169</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_update_message_in_group'>update_message_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='comment'># TODO
-</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2012,39 +2832,125 @@
       <div class="method_details ">
   <h3 class="signature " id="update_role-instance_method">
   
-    #<strong>update_role</strong>(role_id, title, can_delete, can_kick)  &#x21d2; <tt>Object</tt> 
+    #<strong>update_role</strong>(role_id, title, can_delete, can_kick)  &#x21d2; <tt>nil</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Update a role
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>role_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the role to update</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>title</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The new name of the role</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>can_delete</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The new value of canDelete</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>can_kick</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The new value of canKick</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-347
-348
-349
-350
-351
-352
-353
-354
-355</pre>
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 347</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 500</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_role'>update_role</span><span class='lparen'>(</span><span class='id identifier rubyid_role_id'>role_id</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_can_delete'>can_delete</span><span class='comma'>,</span> <span class='id identifier rubyid_can_kick'>can_kick</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UPDATE group_roles
+  <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UPDATE group_roles
               SET title = ?,
                   canDelete = ?,
                   canKick = ?
-              WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_can_delete'>can_delete</span><span class='comma'>,</span> <span class='id identifier rubyid_can_kick'>can_kick</span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span>
+              WHERE id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_can_delete'>can_delete</span><span class='comma'>,</span> <span class='id identifier rubyid_can_kick'>can_kick</span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2054,62 +2960,132 @@
       <div class="method_details ">
   <h3 class="signature " id="update_role_of_user_in_group-instance_method">
   
-    #<strong>update_role_of_user_in_group</strong>(group_id, user_id, role_id)  &#x21d2; <tt>Object</tt> 
+    #<strong>update_role_of_user_in_group</strong>(group_id, user_id, role_id)  &#x21d2; <tt>nil</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Assign a group role to a member in a char group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the group</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the user</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>role_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the role to assign to user</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-357
-358
-359
-360
-361
-362
-363
-364
-365
-366
-367
-368
-369
-370
-371
-372
-373
-374
-375
-376
-377
-378
-379
-380
-381
-382
-383
-384
-385
-386
-387
-388
-389
-390
-391
-392</pre>
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 357</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 519</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_role_of_user_in_group'>update_role_of_user_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_current_role_id'>current_role_id</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT 
+  <span class='id identifier rubyid_current_role_id'>current_role_id</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT 
                                 users_group_roles.group_role_id
                               FROM 
                                 users_group_roles
@@ -2119,28 +3095,30 @@
                                 ON group_roles.id = users_group_roles.group_role_id
                               WHERE group_roles.group_id = ?
                               AND users.id = ?
-                              </span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+                              </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
 
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_current_role_id'>current_role_id</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_role_id'>role_id</span>
       <span class='comment'># update role_id
-</span>      <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UPDATE users_group_roles
+</span>      <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UPDATE users_group_roles
                 SET group_role_id = ?
                 WHERE users_group_roles.group_role_id =
                   (SELECT id 
                     FROM group_roles 
                   WHERE group_id = ?)
-                AND user_id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+                AND user_id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='comment'># delete role from user
-</span>      <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DELETE FROM users_group_roles
+</span>      <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM users_group_roles
                   WHERE users_group_roles.group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)
-                  AND user_id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+                  AND user_id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='comment'># create new relation
-</span>    <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO users_group_roles (group_role_id, user_id) VALUES (?, ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+</span>    <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO users_group_roles (group_role_id, user_id) VALUES (?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_role_id'>role_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2150,23 +3128,206 @@
       <div class="method_details ">
   <h3 class="signature " id="user_can_kick-instance_method">
   
-    #<strong>user_can_kick</strong>(user_id, member_id, group_id)  &#x21d2; <tt>Object</tt> 
+    #<strong>user_can_kick</strong>(user_id, member_id, group_id)  &#x21d2; <tt>Boolean</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns whether or not a user can kick another user in a chat group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the user that should have the permission to kick</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>member_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the user to kick</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the group</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-300
-301
-302
-303
-304
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 416</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_user_can_kick'>user_can_kick</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_group'>group</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>creator</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_get_user_by_id'><span class='object_link'><a href="#get_user_by_id-instance_method" title="Model#get_user_by_id (method)">get_user_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='op'>=</span> <span class='id identifier rubyid_get_user_by_id'><span class='object_link'><a href="#get_user_by_id-instance_method" title="Model#get_user_by_id (method)">get_user_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_member_id'>member_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_get_group_by_id'><span class='object_link'><a href="#get_group_by_id-instance_method" title="Model#get_group_by_id (method)">get_group_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_user_role_id'>user_role_id</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM users_group_roles WHERE user_id = ? AND group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_user_role_id'>user_role_id</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_user_role_id'>user_role_id</span> <span class='op'>=</span> <span class='id identifier rubyid_user_role_id'>user_role_id</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>group_role_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_user_role'>user_role</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM group_roles WHERE id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_role_id'>user_role_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+
+  <span class='kw'>return</span> <span class='lparen'>(</span><span class='id identifier rubyid_user_role'>user_role</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_user_role'>user_role</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>canKick</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>on</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="user_exists_in_group-instance_method">
+  
+    #<strong>user_exists_in_group</strong>(group_id, user_id)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns whether or not a user is already a member of a group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the group</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the user</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
 305
 306
 307
@@ -2177,80 +3338,19 @@
 312
 313
 314
-315
-316
-317
-318
-319
-320</pre>
+315</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 300</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_user_can_kick'>user_can_kick</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_member_id'>member_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_group'>group</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>creator</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='kw'>true</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_get_user_by_id'><span class='object_link'><a href="#get_user_by_id-instance_method" title="Model#get_user_by_id (method)">get_user_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_member'>member</span> <span class='op'>=</span> <span class='id identifier rubyid_get_user_by_id'><span class='object_link'><a href="#get_user_by_id-instance_method" title="Model#get_user_by_id (method)">get_user_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_member_id'>member_id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_get_group_by_id'><span class='object_link'><a href="#get_group_by_id-instance_method" title="Model#get_group_by_id (method)">get_group_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
-
-  <span class='id identifier rubyid_user_role_id'>user_role_id</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM users_group_roles WHERE user_id = ? AND group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_user_role_id'>user_role_id</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='kw'>false</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_user_role_id'>user_role_id</span> <span class='op'>=</span> <span class='id identifier rubyid_user_role_id'>user_role_id</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>group_role_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-
-  <span class='id identifier rubyid_user_role'>user_role</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM group_roles WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_role_id'>user_role_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
-
-  <span class='kw'>return</span> <span class='lparen'>(</span><span class='id identifier rubyid_user_role'>user_role</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_user_role'>user_role</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>canKick</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>on</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="user_exists_in_group-instance_method">
-  
-    #<strong>user_exists_in_group</strong>(group_id, user_id)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 219</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 305</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user_exists_in_group'>user_exists_in_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_is_member'>is_member</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT
+  <span class='id identifier rubyid_is_member'>is_member</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT
               *
               FROM groups_users
               WHERE user_id = ?
-              AND group_id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+              AND group_id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_is_member'>is_member</span> <span class='op'>?</span> <span class='kw'>true</span> <span class='op'>:</span> <span class='kw'>false</span>
 <span class='kw'>end</span></pre>
@@ -2262,31 +3362,85 @@
       <div class="method_details ">
   <h3 class="signature " id="user_is_owner_of_group-instance_method">
   
-    #<strong>user_is_owner_of_group</strong>(group_id, user_id)  &#x21d2; <tt>Object</tt> 
+    #<strong>user_is_owner_of_group</strong>(group_id, user_id)  &#x21d2; <tt>Boolean</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns whether or not a user is the creator of a chat group
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the group</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the user</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-404
-405
-406
-407
-408</pre>
+582
+583
+584
+585
+586</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 404</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 582</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user_is_owner_of_group'>user_is_owner_of_group</span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='id identifier rubyid_get_group_by_id'><span class='object_link'><a href="#get_group_by_id-instance_method" title="Model#get_group_by_id (method)">get_group_by_id</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_group_id'>group_id</span><span class='rparen'>)</span>
 
-  <span class='kw'>return</span> <span class='id identifier rubyid_group'>group</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>creator</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_user_id'>user_id</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_group'>group</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>creator</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_user_id'>user_id</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2296,35 +3450,75 @@
       <div class="method_details ">
   <h3 class="signature " id="username_exists-instance_method">
   
-    #<strong>username_exists</strong>(username)  &#x21d2; <tt>Object</tt> 
+    #<strong>username_exists</strong>(username)  &#x21d2; <tt>Boolean</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Returns whether or not a username is already taken
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Username</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-210
-211
-212
-213
-214
-215
-216
-217</pre>
+290
+291
+292
+293
+294
+295
+296
+297</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 210</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 290</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_username_exists'>username_exists</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_db'><span class='object_link'><a href="#connect_db-instance_method" title="Model#connect_db (method)">connect_db</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
 
   <span class='comment'># get the user id of user with username
-</span>  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT id FROM users WHERE username = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+</span>  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT id FROM users WHERE username = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_user'>user</span> <span class='op'>?</span> <span class='kw'>true</span> <span class='op'>:</span> <span class='kw'>false</span>
 <span class='kw'>end</span></pre>
@@ -2338,9 +3532,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Apr 20 11:24:58 2022 by
+  Generated on Thu Apr 21 18:14:14 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.27 (ruby-2.6.6).
+  0.9.27 (ruby-3.0.4).
 </div>
 
     </div>

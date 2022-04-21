@@ -1,3 +1,4 @@
+# Model module
 module Model
   # Create an instance of the database
   #
@@ -227,9 +228,9 @@ module Model
     return message
   end
 
-  def update_message_in_group(group_id)
-    # TODO
-  end
+  # def update_message_in_group(group_id)
+  # TODO
+  # end
 
   # Delete a message by id
   #
@@ -508,6 +509,13 @@ module Model
     return nil
   end
 
+  # Assign a group role to a member in a char group
+  #
+  # @param [Integer] group_id The ID of the group
+  # @param [Integer] user_id The ID of the user
+  # @param [Integer] role_id The ID of the role to assign to user
+  #
+  # @return [nil]
   def update_role_of_user_in_group(group_id, user_id, role_id)
     db = connect_db()
 
@@ -543,8 +551,16 @@ module Model
       # create new relation
       db.execute('INSERT INTO users_group_roles (group_role_id, user_id) VALUES (?, ?)', role_id, user_id)
     end
+
+    return nil
   end
 
+  # Delete a group role
+  #
+  # @param [Integer] group_id The ID of the group
+  # @param [Integer] role_id The ID of the role to delete
+  #
+  # @return [nil]
   def delete_role_in_group(group_id, role_id)
     db = connect_db()
 
@@ -553,8 +569,16 @@ module Model
                 INNER JOIN users_group_roles ON group_roles.id = users_group_roles.group_role_id
                 WHERE group_roles.id = ?
                 AND group_roles.group_id', role_id, group_id)
+
+    return nil
   end
 
+  # Returns whether or not a user is the creator of a chat group
+  #
+  # @param [Integer] group_id The ID of the group
+  # @param [Integer] user_id The ID of the user
+  #
+  # @return [Boolean]
   def user_is_owner_of_group(group_id, user_id)
     group = get_group_by_id(group_id)
 
