@@ -134,6 +134,9 @@ module Model
 
     # create message
     db.execute('INSERT INTO messages (message, group_id, user_id) VALUES (?, ?, ?)', message, group_id, user_id)
+    message_id = db.last_insert_row_id
+
+    return get_message_by_id(message_id)
   end
 
   def get_messages_in_group(group_id)
@@ -157,7 +160,8 @@ module Model
     db = connect_db()
 
     message = db.execute('SELECT
-                            *
+                            messages.*,
+                            users.username
                           FROM messages
                           LEFT JOIN users
                           ON users.id = messages.user_id
@@ -288,7 +292,6 @@ module Model
 
     # ska ej kunna ta bort skaparen av gruppen
     if (!group['creator'] != user_id.to_i)
-      print("Deleting user #{member_id} from group #{group_id}")
       # delete user group role relation
       db.execute('DELETE FROM users_group_roles WHERE user_id = ? AND group_role_id = (SELECT id FROM group_roles WHERE group_id = ?)', member_id, group_id)
 

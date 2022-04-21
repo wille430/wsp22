@@ -45,16 +45,16 @@ div.layout
         header.group-header 
             h2 #{group["name"]}
         section.chat
-            ul.message-list
+            ul.message-list#msgs
                 - messages.each do |message|
-                    li.message
+                    li.message id="#{message["id"]}"
                         span #{message["username"]}
                         span #{message["message"]}
                         - if session[:user_id] == message["user_id"] || group["creator"] == session[:user_id]
                             form action="/groups/#{group["id"]}/messages/#{message["id"]}/destroy" method="post"   
                                 input type="submit" value="Delete"
         section.chat-input
-            form action="/groups/#{group["id"]}/messages" method="post" 
+            form#messageForm action="/groups/#{group["id"]}/messages" method="post" 
                 input type="text" name="message" placeholder="Send a message..."
                 input type="submit" value="Send"
     javascript: 

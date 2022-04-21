@@ -4,11 +4,15 @@ require 'slim'
 require 'bcrypt'
 require 'sinatra/reloader'
 require 'sinatra-websocket'
+require 'json'
 require './model.rb'
 
 include Model
 
 enable :sessions
+
+set :server, 'thin'
+set :sockets, []
 
 public_routes = [
   '/login',
@@ -187,29 +191,47 @@ post('/groups/:group_id/destroy') do
 end
 
 # MESSAGES
-
-post('/groups/:group_id/messages') do
-  if !request.websocket?
-    group_id = params[:group_id]
-    message = params[:message]
-    user_id = session[:user_id]
-
-    if (!user_exists_in_group(group_id, user_id))
-      return 'You are not a member of this group'
-    end
-
-    create_message_in_group(group_id, user_id, message)
-
-    redirect("/groups/#{group_id}")
-  else
+get('/groups/:group_id/messages') do
+  if request.websocket?
     request.websocket do |ws|
-      ws.onmessage do |msg|
-        EM.next_tick { settings.sockets.each { |s| s.send(msg) } }
+      ws.onopen do
+        settings.sockets << ws
+      end
+      ws.onclose do
+        warn('websocket closed')
+        settings.sockets.delete(ws)
       end
     end
+  else
+    return
   end
 end
 
+post('/groups/:group_id/messages') do
+  group_id = params[:group_id]
+  message = params[:message]
+  user_id = session[:user_id]
+
+  if (!user_exists_in_group(group_id, user_id))
+    return 'You are not a member of this group'
+  end
+
+  msg = create_message_in_group(group_id, user_id, message)
+
+  EM.next_tick {
+    settings.sockets.each { |s|
+      s.send(JSON.generate({
+        id: msg['id'],
+        username: msg['username'],
+        msg: message
+      }))
+    }
+  }
+
+  redirect("/groups/#{group_id}")
+end
+
+# TODO
 post('/groups/{group_id}/messages/{message_id}/update') do
   group_id = params[:group_id]
   message_id = params[:message_id]
@@ -231,6 +253,15 @@ post('/groups/{group_id}/messages/:message_id/destroy') do
     delete_message(group_id, message_id, user_id)
   rescue => e
     return e.message
+  else
+    EM.next_tick {
+      settings.sockets.each { |s|
+        s.send(JSON.generate({
+          type: 'delete',
+          id: message_id
+        }))
+      }
+    }
   end
 
   redirect("/groups/#{group_id}")
