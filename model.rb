@@ -291,6 +291,12 @@ module Model
     return user ? true : false
   end
 
+  # Returns whether or not a user is already a member of a group
+  #
+  # @param [Integer] group_id The ID of the group
+  # @param [Integer] user_id The ID of the user
+  #
+  # @return [Boolean]
   def user_exists_in_group(group_id, user_id)
     db = connect_db()
 
@@ -303,6 +309,12 @@ module Model
     return is_member ? true : false
   end
 
+  # Add a user as a member to a group
+  #
+  # @param [Integer] group_id The ID of the group
+  # @param [String] new_member_username The username of the user to add to the chat group
+  #
+  # @return [nil]
   def add_member_to_group(group_id, new_member_username)
     db = connect_db()
 
@@ -322,8 +334,18 @@ module Model
 
     puts "Adding user #{user_id} to group #{group_id}"
     db.execute("INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)", user_id, group_id)
+
+    return nil
   end
 
+  # Returns all members in a group
+  #
+  # @param [Integer] group_id The ID of the group
+  #
+  # @return [Array<Hash>]
+  #   * :id [Integer] The ID of the user
+  #   * :username [String] The username of the user
+  #   * :pwd_digest [String] The hashed password of the user
   def get_members_in_group(group_id)
     if (!group_id)
       return []
@@ -348,6 +370,12 @@ module Model
     return members
   end
 
+  # Delete a user from a chat group
+  #
+  # @param [Integer] member_id The ID of the user to kick
+  # @param [Integer] group_id The ID of the group
+  #
+  # @return [nil]
   def delete_member(member_id, group_id)
     db = connect_db()
 
@@ -370,8 +398,17 @@ module Model
       # delete user group relation
       db.execute("DELETE FROM groups_users WHERE user_id = ? AND group_id = ?", member_id, group_id)
     end
+
+    return nil
   end
 
+  # Returns whether or not a user can kick another user in a chat group
+  #
+  # @param [Integer] user_id The ID of the user that should have the permission to kick
+  # @param [Integer] member_id The ID of the user to kick
+  # @param [Integer] group_id The ID of the group
+  #
+  # @return [Boolean]
   def user_can_kick(user_id, member_id, group_id)
     if (group["creator"] == user_id)
       return true
@@ -394,12 +431,31 @@ module Model
     return (user_role && user_role["canKick"] == "on")
   end
 
+  # Create a role in a chat group
+  #
+  # @param [Integer] group_id The ID of the group
+  # @param [String] title The name of the role
+  # @param [Boolean] can_delete True if the role should allow deletion of messages
+  # @param [Boolean] can_kick True if the role should allow kicking of members
+  #
+  # @return [nil]
   def create_role(group_id, title, can_delete, can_kick)
     db = connect_db()
 
     db.execute("INSERT INTO group_roles (group_id, title, canDelete, canKick) VALUES (?, ?, ?, ?)", group_id, title, can_delete, can_kick)
+    return nil
   end
 
+  # Find a role by id
+  #
+  # @param [Integer] role_id The ID of the role to find
+  #
+  # @return [Hash]
+  #   * :id [Integer] The ID of the role
+  #   * :group_id [Integer] The ID of the group
+  #   * :title [String] The name of the role
+  #   * :canDelete [String] "on" if the user can delete messages
+  #   * :canKick [String] "on" if the user can kick members
   def get_role(role_id)
     if (!role_id)
       return nil
@@ -411,6 +467,16 @@ module Model
     return role
   end
 
+  # Find all roles in a chat group
+  #
+  # @param [Integer] group_id The ID of the group
+  #
+  # @return [Array<Hash>]
+  #   * :id [Integer] The ID of the role
+  #   * :group_id [Integer] The ID of the group
+  #   * :title [String] The name of the role
+  #   * :canDelete [String] "on" if the user can delete messages
+  #   * :canKick [String] "on" if the user can kick members
   def get_roles_in_group(group_id)
     db = connect_db()
 
@@ -419,6 +485,14 @@ module Model
     return group_roles
   end
 
+  # Update a role
+  #
+  # @param [Integer] role_id The ID of the role to update
+  # @param [String] title The new name of the role
+  # @param [Boolean] can_delete The new value of canDelete
+  # @param [Boolean] can_kick The new value of canKick
+  #
+  # @return [nil]
   def update_role(role_id, title, can_delete, can_kick)
     db = connect_db()
 
@@ -427,6 +501,8 @@ module Model
                     canDelete = ?,
                     canKick = ?
                 WHERE id = ?", title, can_delete, can_kick, role_id)
+
+    return nil
   end
 
   def update_role_of_user_in_group(group_id, user_id, role_id)
