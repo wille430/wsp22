@@ -68,6 +68,13 @@ module Model
     return nil
   end
 
+  # Create a user from username and password and store user_id in session
+  #
+  # @param [String] username Username
+  # @param [String] password Password
+  # @param [String] confirm_password Password confirmation. Should equal passowrd.
+  #
+  # @return [nil]
   def register_user(username, password, confirm_password)
     # validate password
     if !(password == confirm_password)
@@ -97,6 +104,12 @@ module Model
     session[:user_id] = user_id
   end
 
+  # Create a chat group
+  #
+  # @param [Integer] user_id The id of the user creator
+  # @param [String] group_name The name of the group
+  #
+  # @return [nil]
   def create_group(user_id, group_name)
     db = connect_db()
 
@@ -108,12 +121,26 @@ module Model
     db.execute("INSERT INTO groups_users (user_id, group_id) VALUES (?, ?)", user_id, group_id)
   end
 
+  # Find a chat group by id
+  #
+  # @param [Integer] group_id The id of the group
+  #
+  # @return [Hash]
+  #   * :id [Integer] The ID of the chat group
+  #   * :name [String] The name of the chat group
+  #   * :creator [Integer] The ID of the chat group
   def get_group_by_id(group_id)
     db = connect_db()
     group = db.execute("SELECT * FROM chat_groups WHERE id = ?", group_id).first
     return group
   end
 
+  # Update name of a char group by id
+  #
+  # @param [Integer] group_id The id of the group
+  # @param [String] name The new name of the group
+  #
+  # @return [nil]
   def update_group(group_id, name)
     db = connect_db()
 
@@ -123,12 +150,24 @@ module Model
                 WHERE id = ?", name, group_id)
   end
 
+  # Delete group by id
+  #
+  # @param [Integer] group_id The id of the group
+  #
+  # @return [nil]
   def delete_group(group_id)
     db = connect_db()
 
     db.execute("DELETE FROM chat_groups WHERE id = ?", group_id)
   end
 
+  # Create a message in a chat group
+  #
+  # @param [Integer] group_id The id of the group
+  # @param [Integer] user_id The id of the user
+  # @param [String] message The text that the user sent
+  #
+  # @return [nil]
   def create_message_in_group(group_id, user_id, message)
     db = connect_db()
 
@@ -136,6 +175,15 @@ module Model
     db.execute("INSERT INTO messages (message, group_id, user_id) VALUES (?, ?, ?)", message, group_id, user_id)
   end
 
+  # Get all messages in a group by id
+  #
+  # @param [Integer] group_id The id of the group
+  #
+  # @return [Array<Hash>]
+  #   * :id [Integer] The ID of the message
+  #   * :message [String] The text message
+  #   * :group_id [Integer] The ID of the group where the message was posted
+  #   * :user_id [Integer] The ID of the user that sent the message
   def get_messages_in_group(group_id)
     db = connect_db()
 
@@ -153,6 +201,15 @@ module Model
     return messages
   end
 
+  # Get message by id
+  #
+  # @param [Integer] id The ID of the message
+  #
+  # @return [Hash]
+  #   * :id [Integer] The ID of the message
+  #   * :message [String] The text message
+  #   * :group_id [Integer] The ID of the group where the message was posted
+  #   * :user_id [Integer] The ID of the user that sent the message
   def get_message_by_id(id)
     db = connect_db()
 
@@ -170,6 +227,11 @@ module Model
     # TODO
   end
 
+  # Delete a message by id
+  #
+  # @param [Integer] message_id The ID of the message
+  #
+  # @return [nil]
   def delete_message(group_id, message_id, user_id)
     db = connect_db()
 
@@ -184,6 +246,14 @@ module Model
     db.execute("DELETE FROM messages WHERE id = ?", message_id)
   end
 
+  # Get all the groups that the user is a member of
+  #
+  # @param [Integer] user_id The ID of the user
+  #
+  # @return [Array<Hash>]
+  #   * :id [Integer] The ID of the user
+  #   * :username [String] The username
+  #   * :pwd_digest [String] The hashed password
   def get_groups_of_user(user_id)
     db = connect_db()
     user_id = session[:user_id]
@@ -207,6 +277,11 @@ module Model
     return groups
   end
 
+  # Returns whether or not a username is already taken
+  #
+  # @param [String] username Username
+  #
+  # @return [Boolean]
   def username_exists(username)
     db = connect_db()
 
