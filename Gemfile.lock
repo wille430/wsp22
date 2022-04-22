@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/chrisb/yard-sinatra
+  revision: 226e048f615bdf068e65010d47f8cb143fd08865
+  specs:
+    yard-sinatra (2.0.0.beta)
+      activesupport
+      yard (~> 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,6 +41,7 @@ GEM
     rack-protection (2.2.0)
       rack
     rake (13.0.6)
+    redcarpet (3.5.1)
     ruby2_keywords (0.0.5)
     rufo (0.13.0)
     sinatra (2.2.0)
@@ -68,8 +77,6 @@ GEM
     webrick (1.7.0)
     yard (0.9.27)
       webrick (~> 1.7.0)
-    yard-sinatra (1.0.0)
-      yard (~> 0.7)
     zeitwerk (2.5.4)
 
 PLATFORMS
@@ -80,6 +87,7 @@ DEPENDENCIES
   activerecord
   bcrypt
   rake
+  redcarpet
   rufo
   sinatra
   sinatra-activerecord
@@ -89,7 +97,7 @@ DEPENDENCIES
   sqlite3
   webrick
   yard
-  yard-sinatra
+  yard-sinatra!
 
 BUNDLED WITH
    2.1.4
