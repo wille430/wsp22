@@ -1,78 +1,79 @@
-div.layout
-    aside.groups-nav 
-        a href="/" #{"<- All groups"}
-        ul
-            - if groups
-                - groups.each do |group|
-                    li.group-card
-                        a href="/groups/#{group["id"]}" #{group["name"]}
-        a href="/groups/new" + Create group
+== slim :"logged-in-layout"
+    div.layout
+        aside.groups-nav 
+            a href="/" #{"<- All groups"}
+            ul
+                - if groups
+                    - groups.each do |group|
+                        li.group-card
+                            a href="/groups/#{group["id"]}" #{group["name"]}
+            a href="/groups/new" + Create group
 
-    aside.members-nav
-        h3 Members
-        ul
-            - if members 
-                - i = 0
-                - members.each do |member|
-                    li.member-card 
-                        - role_of_member = role(member["group_role_id"])
-                        div.cardHeader
-                            span #{member["username"]}
-                            button.toggleMemberOptionsButton onClick='show(#{i})'
-                                span ...
-                            ul.memberOptions style='display:none;'
-                                - if current_user_can_kick(member["id"], group["id"])
-                                    li
-                                        form action="/groups/#{group["id"]}/members/#{member["id"]}/destroy" method="post" 
-                                                input type="submit" value="Kick"/
-                                                input type="hidden" name="redirect" value="/groups/#{group["id"]}"/
-                                
-                                - if session[:user_id] == group["creator"]
-                                    li
-                                        form action="/groups/#{group["id"]}/members/edit" method="get" 
-                                            input type="submit" value="Assign Role"/
-           
-                        - isGroupOwner = member["id"] == group["creator"]
-                        - if role_of_member && !isGroupOwner
-                            span #{role_of_member["title"]}
-                        - elsif isGroupOwner
-                            span Group Owner
-                    - i += 1
-        - if group["creator"] == session[:user_id]
-            a href="/groups/#{group["id"]}/members/edit" +
+        aside.members-nav
+            h3 Members
+            ul
+                - if members 
+                    - i = 0
+                    - members.each do |member|
+                        li.member-card 
+                            - role_of_member = role(member["group_role_id"])
+                            div.cardHeader
+                                span #{member["username"]}
+                                button.toggleMemberOptionsButton onClick='show(#{i})'
+                                    span ...
+                                ul.memberOptions style='display:none;'
+                                    - if current_user_can_kick(member["id"], group["id"])
+                                        li
+                                            form action="/groups/#{group["id"]}/members/#{member["id"]}/destroy" method="post" 
+                                                    input type="submit" value="Kick"/
+                                                    input type="hidden" name="redirect" value="/groups/#{group["id"]}"/
+                                    
+                                    - if session[:user_id] == group["creator"]
+                                        li
+                                            form action="/groups/#{group["id"]}/members/edit" method="get" 
+                                                input type="submit" value="Assign Role"/
+            
+                            - isGroupOwner = member["id"] == group["creator"]
+                            - if role_of_member && !isGroupOwner
+                                span #{role_of_member["title"]}
+                            - elsif isGroupOwner
+                                span Group Owner
+                        - i += 1
+            - if group["creator"] == session[:user_id]
+                a href="/groups/#{group["id"]}/members/edit" +
 
-    main.group-chat-section
-        header.group-header 
-            h2 #{group["name"]}
-        section.chat
-            ul.message-list#msgs
-                - messages.each do |message|
-                    li.message id="#{message["id"]}"
-                        span.message-user #{message["username"]}
-                        span.message-text #{message["message"]}
-                        - if session[:user_id] == message["user_id"] || group["creator"] == session[:user_id]
-                            form.message-delete action="/groups/#{group["id"]}/messages/#{message["id"]}/destroy" method="post"   
-                                input type="submit" value="Delete"
-        section.chat-input
-            form#messageForm action="/groups/#{group["id"]}/messages" method="post" 
-                input type="text" name="message" placeholder="Send a message..."
-                input type="submit" value="Send"
-    javascript: 
-        let memberOptionsArray = document.querySelectorAll(".memberOptions")
-        function show(index) {
-            let i = 0
-            for (const memberOptions of memberOptionsArray) {
-                if (i === index) {
-                    currentStyle = memberOptions.style.display
-                    if (currentStyle === 'none') {
-                        memberOptions.style.display = 'block'
+        main.group-chat-section
+            header.group-header 
+                h2 #{group["name"]}
+            section.chat
+                ul.message-list#msgs
+                    - messages.each do |message|
+                        li.message id="#{message["id"]}"
+                            span.message-user #{message["username"]}
+                            span.message-text #{message["message"]}
+                            - if session[:user_id] == message["user_id"] || group["creator"] == session[:user_id]
+                                form.message-delete action="/groups/#{group["id"]}/messages/#{message["id"]}/destroy" method="post"   
+                                    input type="submit" value="Delete"
+            section.chat-input
+                form#messageForm action="/groups/#{group["id"]}/messages" method="post" 
+                    input type="text" name="message" placeholder="Send a message..."
+                    input type="submit" value="Send"
+        javascript: 
+            let memberOptionsArray = document.querySelectorAll(".memberOptions")
+            function show(index) {
+                let i = 0
+                for (const memberOptions of memberOptionsArray) {
+                    if (i === index) {
+                        currentStyle = memberOptions.style.display
+                        if (currentStyle === 'none') {
+                            memberOptions.style.display = 'block'
+                        } else {
+                            memberOptions.style.display = 'none'
+                        }
                     } else {
                         memberOptions.style.display = 'none'
                     }
-                } else {
-                    memberOptions.style.display = 'none'
+                    i += 1
                 }
-                i += 1
             }
-        }
-    script src="/js/message_ws.js" 
+        script src="/js/message_ws.js" 

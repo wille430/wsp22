@@ -1,6 +1,7 @@
-section 
-    h3 Create a group 
-    form action="/groups" method="post" 
-        label Group Name
-        input type="text" name="name"/
-        input type="submit" value="Create"/
+== slim :"logged-in-layout"
+    section 
+        h3 Create a group 
+        form action="/groups" method="post" 
+            label Group Name
+            input type="text" name="name"/
+            input type="submit" value="Create"/

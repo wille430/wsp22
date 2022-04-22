@@ -1,4 +1,5 @@
 :root {
+  --primary-lightest: rgb(147, 156, 166);
   --primary-light: rgb(109, 118, 129);
   --primary: rgb(61, 68, 78);
   --primary-dark: rgb(48, 50, 53);
@@ -15,6 +16,10 @@
   box-sizing: border-box;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
 }
 
 ul {
@@ -34,18 +39,29 @@ input[type="submit"] {
   background-color: white;
 }
 
+button:hover,
+input[type="submit"]:hover {
+  cursor: pointer;
+}
+
 .layout {
   display: grid;
   grid-template:
-    "gpnv main mbnv" 100vh
+    "gpnv main mbnv" 100%
     / 12rem 1fr 12rem;
   width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 main {
   grid-area: main;
   width: 100%;
-  height: 100%;
+  flex-grow: 1;
   background-color: var(--primary-light);
 }
 
@@ -68,7 +84,7 @@ main {
   grid-template:
     "head" 3rem
     "chat" 1fr
-    "ctin" 3rem
+    "ctin" auto
     / 100%;
   height: 100%;
 }
@@ -81,13 +97,20 @@ main {
   display: flex;
   flex-direction: column-reverse;
   overflow-y: scroll;
+
+}
+
+.chat::-webkit-scrollbar {
+  display: none;
 }
 
 .chat-input {
   grid-area: ctin;
-  width: 100%;
+  height: 3.5rem;
   background-color: var(--primary);
   padding: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
 }
 
 .chat-input > * {
@@ -116,12 +139,46 @@ main {
   color: white !important;
 }
 
+.user-groups-section {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 24rem;
+  padding-top: 25vh;
+}
+
+.user-groups-section > * + * {
+  margin-top: 0.75rem;
+}
+
+.group-index-card {
+  background-color: var(--primary-lightest);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 24rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-row-gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.chat-button {
+  text-align: right;
+}
+
+.group-delete {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
 .group-card,
 .member-card {
   display: flex;
   align-items: center;
   padding: 0.25rem;
-  background-color: var(--primary-dark);
+  background-color: var(--primary-light);
   margin-bottom: 0.5rem;
   border-radius: var(--border-radius);
   color: white;
@@ -134,10 +191,6 @@ main {
   padding: 0.25rem 0.5rem;
   position: relative;
   height: auto;
-}
-
-.member-card > * + * {
-  padding-top: 0.5rem;
 }
 
 .member-card > span:nth-child(1)::after {
@@ -165,7 +218,7 @@ main {
   display: block;
   height: 2rem;
   width: 2rem;
-  background-color: var(--primary);
+  background-color: var(--primary-lightest);
   border-radius: 100%;
   margin-right: 0.5rem;
 }
@@ -209,13 +262,14 @@ main {
 
 .memberOptions {
   position: absolute;
-  background-color: var(--primary);
+  background-color: var(--primary-lightest);
   border-radius: 0.125rem;
   padding: 0.25rem 0rem;
   border: 2px solid var(--primary-dark);
   width: 8rem;
   right: -0.5rem;
   top: 1.5rem;
+  z-index: 2;
 }
 
 .memberOptions input[type="submit"] {
@@ -235,9 +289,9 @@ main {
 
 .toggleMemberOptionsButton {
   position: relative;
-  background-color: var(--primary-darkest);
+  background-color: var(--primary-lightest);
   border: none;
-  color: white;
+  color: black;
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
@@ -317,11 +371,6 @@ main {
   outline: var(--secondary);
 }
 
-body {
-  display: flex;
-  flex-direction: row;
-}
-
 .adminSideNav {
   background-color: var(--primary-dark);
   padding: 0.5rem;
@@ -336,4 +385,41 @@ body {
 .adminSideNav > h4:not(:nth-child(1)) {
   margin-top: 2rem;
   margin-bottom: 0.25rem;
+}
+
+.upper-nav {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-dark);
+  padding: 0 0.25rem;
+}
+
+.upper-nav input[type="submit"] {
+  padding: 0.075rem 0.4rem;
+  background-color: var(--primary-light);
+  color: white;
+  font-size: smaller;
+}
+
+.user-status {
+  display: flex;
+}
+
+.user-status > .username {
+  color: white;
+  font-size: smaller;
+}
+
+.logged-in-indicator {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin: auto 0.25rem;
+  background-color: rgb(23, 173, 23);
+}
+
+.spacer {
+  flex-grow: 1;
 }

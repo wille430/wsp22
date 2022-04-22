@@ -1,6 +1,7 @@
-section 
-    h3 Update #{group["title"]} 
-    form action="/groups/#{params[:group_id]}/update" method="post" 
-        label Group Name
-        input type="text" name="name"/
-        input type="submit" value="Update"/
+== slim :"logged-in-layout"
+    section 
+        h3 Update #{group["title"]} 
+        form action="/groups/#{params[:group_id]}/update" method="post" 
+            label Group Name
+            input type="text" name="name"/
+            input type="submit" value="Update"/

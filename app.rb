@@ -70,6 +70,10 @@ helpers do
     user_id = session[:user_id]
     return user_can_kick(user_id, member_id, group_id)
   end
+
+  def user(user_id = session[:user_id])
+    return get_user_by_id(user_id)
+  end
 end
 
 # END HELPERS

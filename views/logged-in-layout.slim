@@ -1,0 +1,10 @@
+nav.upper-nav
+    div.user-status 
+        - user = user()
+        span.username #{user["username"]}
+        div.logged-in-indicator
+    div.spacer
+    form action="/logout" method="post" 
+        input type="submit" value="Logout"/
+main
+    == yield

@@ -307,8 +307,8 @@ module Model
     is_member = db.execute('SELECT
                 *
                 FROM groups_users
-                WHERE user_id = ?
-                AND group_id = ?', user_id, group_id).first
+                WHERE user_id = ? AND group_id = ?
+                ', user_id, group_id.to_i).first
 
     return is_member ? true : false
   end

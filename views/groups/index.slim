@@ -1,10 +1,12 @@
-section 
-    h3 Groups
-    - groups.each do |group|
-        div
-            span #{group["name"]}
-            a href="/groups/#{group["id"]}" Chat 
-            - if session[:user_id] == group["creator"] 
-                form action="/groups/#{group["id"]}/destroy" method="post"
-                    input type="submit" value="Delete"/ 
-    a href="/groups/new" Create a new group 
+== slim :"logged-in-layout"
+    section.user-groups-section
+        h3 My chat groups
+        ul.group-index-list
+        - groups.each do |group|
+                div.group-index-card
+                    span.group-name #{group["name"]}
+                    a.chat-button href="/groups/#{group["id"]}" Chat 
+                    - if session[:user_id] == group["creator"] 
+                        form.group-delete action="/groups/#{group["id"]}/destroy" method="post"
+                            input type="submit" value="Delete"/
+        a href="/groups/new" Create a new group 
