@@ -38,7 +38,7 @@ before /(\/groups\/)\d+/ do
   end
 end
 
-before /(\/groups\/)\w+(\/(messages|roles|members|edit|update))/ do
+before /(\/groups\/)\w+(\/(roles|members|edit|update))/ do
   group_id = request.path_info[/(?<=\/groups\/)(\d+)/]
   user_id = session[:user_id]
   # check if user is admin/creator

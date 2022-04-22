@@ -15,8 +15,8 @@ const setup_ws = () => {
         el.innerHTML +
         `
         <li class="message" id="${msg["id"]}">
-            <span>${msg["username"]}</span>
-            <span>${msg["msg"]}</span>
+            <span class="message-user">${msg["username"]}</span>
+            <span class="message-text">${msg["msg"]}</span>
         </li>
     `;
     }
