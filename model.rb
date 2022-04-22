@@ -45,7 +45,11 @@ module Model
   # @param [String] username Username
   # @param [String] password Password
   #
-  # @return [nil]
+  # @return [Hash]
+  #   * :error [Boolean] Whether or not an error occured
+  #   * :validation_errors [Array<Hash>] An array of errors
+  #     * :param [String] Name of the parameter
+  #     * :errors [Array<String>] An array of error codes
   def login_user(username, password)
     db = connect_db()
 
@@ -60,13 +64,36 @@ module Model
         # login user
         session[:user_id] = user['id']
       else
-        raise 'Invalid password or username'
+        return {
+                 error: true,
+                 validation_errors: [
+                   {
+                     param: 'password',
+                     errors: [
+                       'invalid'
+                     ]
+                   }
+                 ]
+               }
       end
     else
-      raise 'Invalid username'
+      return {
+               error: true,
+               validation_errors: [
+                 {
+                   param: 'username',
+                   errors: [
+                     'not-found'
+                   ]
+                 }
+               ]
+             }
     end
 
-    return nil
+    return {
+             error: false,
+             validation_errors: []
+           }
   end
 
   # Create a user from username and password and store user_id in session
@@ -75,12 +102,32 @@ module Model
   # @param [String] password Password
   # @param [String] confirm_password Password confirmation. Should equal passowrd.
   #
-  # @return [nil]
+  # @return [Hash]
+  #   * :error [Boolean] Whether or not an error occured
+  #   * :validation_errors [Array<Hash>] An array of errors
+  #     * :param [String] Name of the parameter
+  #     * :errors [Array<String>] An array of error codes
   def register_user(username, password, confirm_password)
     # validate password
     if !(password == confirm_password)
       # show error message: passwords not matching
-      raise 'Passwords not matching'
+      return {
+               error: true,
+               validation_errors: [
+                 {
+                   param: 'password',
+                   errors: [
+                     'not-matching'
+                   ]
+                 },
+                 {
+                   param: 'confirm',
+                   errors: [
+                     'not-matching'
+                   ]
+                 }
+               ]
+             }
     end
 
     db = connect_db()
@@ -89,7 +136,17 @@ module Model
     user = db.execute('SELECT * FROM users WHERE username = ?', username).first
     if user
       # show error message: user exists already
-      raise 'Username is already in use'
+      return {
+               error: true,
+               validation_errors: [
+                 {
+                   param: 'username',
+                   errors: [
+                     'not-unique'
+                   ]
+                 }
+               ]
+             }
     end
 
     # one-way encrypt password
@@ -103,6 +160,11 @@ module Model
 
     # save user_id in session
     session[:user_id] = new_user['id']
+
+    return {
+             error: false,
+             validation_errors: []
+           }
   end
 
   # Create a chat group

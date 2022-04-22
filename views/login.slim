@@ -4,7 +4,15 @@ main.login
         form.loginForm action="/login" method="post"
             label for="usernameField" Username
             input#usernameField.textInput  type="text" name="username"/
+
+            - if params[:error] === "invalid"
+                span.error-msg Wrong username or password
+
             label for="passwordField" Password
             input#passwordField.textInput type="password" name="password"/
+
+            - if params[:error] === "invalid"
+                span.error-msg Wrong username or password
+
             input type="submit" value="Login"/
             a href="/signup" Create a new account 

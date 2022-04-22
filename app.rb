@@ -90,10 +90,10 @@ post('/login') do
   username = params[:username]
   password = params[:password]
 
-  begin
-    login_user(username, password)
-  rescue => exception
-    return exception.message
+  errors = login_user(username, password)
+
+  if errors[:error]
+    redirect('/login?error=invalid')
   else
     redirect('/')
   end
@@ -115,10 +115,18 @@ post('/users/new') do
   password = params[:password]
   confirm_password = params[:confirm_password]
 
-  begin
-    register_user(username, password, confirm_password)
-  rescue => exception
-    return exception.message
+  errors = register_user(username, password, confirm_password)
+
+  if errors[:error]
+    redirect_url = '/signup?'
+
+    errors[:validation_errors].each do |error|
+      error[:errors].each do |code|
+        redirect_url += error[:param] + '=' + code + '&'
+      end
+    end
+
+    redirect(redirect_url[0...-1])
   else
     redirect('/')
   end

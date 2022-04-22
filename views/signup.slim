@@ -4,12 +4,22 @@ main.login
         form.loginForm  action="/users/new" method="post" 
             label for="usernameField" Username
             input#usernameField.textInput type="text" name="username"/
+
+            - if params[:username] === "not-unique"
+                span.error-msg Username is already in use
             
             label for="passwordField" Password
             input#passwordField.textInput type="password" name="password"/
 
+            - if params[:password] === "not-matching"
+                span.error-msg Passwords must match
+
             label for="passwordConfirmField" Password Confirm
             input#passwordConfirmField.textInput type="password" name="confirm_password"/
+
+            - if params[:confirm] === "not-matching"
+                span.error-msg Passwords must match
+
             
             input type="submit" value="Sign Up"/
             a href="/login" I already have an account

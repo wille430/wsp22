@@ -423,3 +423,7 @@ main {
 .spacer {
   flex-grow: 1;
 }
+
+.error-msg {
+  color: rgb(252, 90, 69);
+}
