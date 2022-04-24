@@ -7,4 +7,7 @@ html lang="en"
 
         link rel="stylesheet" href="/css/style.css"/
     body
+        - if params[:error] === "access-denied"
+            div.error-popup
+                span Error: You don't have sufficient permissions to access that resource
         == yield

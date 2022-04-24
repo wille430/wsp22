@@ -97,7 +97,6 @@ main {
   display: flex;
   flex-direction: column-reverse;
   overflow-y: scroll;
-
 }
 
 .chat::-webkit-scrollbar {
@@ -426,4 +425,31 @@ main {
 
 .error-msg {
   color: rgb(252, 90, 69);
+}
+
+.error-popup {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: var(--primary-light);
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  animation-name: slide-out;
+  animation-duration: 5.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-out {
+  0% {
+    left: -100vw;
+  }
+  5% {
+    left: 1rem;
+  }
+  95% {
+    left: 1rem;
+  }
+  100% {
+    left: -100vw;
+  }
 }
