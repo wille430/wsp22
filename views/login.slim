@@ -15,4 +15,9 @@ main.login
                 span.error-msg Wrong username or password
 
             input type="submit" value="Login"/
+
+
+            - if params[:error] === "timeout"
+                span.error-msg You have made too many login attempts recently. Please retry in a few minutes.
+
             a href="/signup" Create a new account 

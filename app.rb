@@ -22,6 +22,8 @@ public_routes = [
   '/users/new'
 ]
 
+MAX_LOGIN_ATTEMPTS = 5
+
 before do
   # redirect to login if user is trying to access route that requires user authentication
   if !(public_routes.include? request.path_info) && !session[:user_id]
@@ -97,9 +99,23 @@ post('/login') do
 
   errors = login_user(username, password)
 
+  if (session[:login_attempts].kind_of?(Array))
+    # filter out old login attempts
+    session[:login_attempts] = session[:login_attempts].select { |time| Time.now.to_i - time < 60 }
+  else
+    session[:login_attempts] = []
+  end
+
+  if (session[:login_attempts].length >= MAX_LOGIN_ATTEMPTS)
+    redirect('/login?error=timeout')
+  end
+
   if errors[:error]
+    session[:login_attempts] = session[:login_attempts] << Time.now.to_i
+
     redirect('/login?error=invalid')
   else
+    session[:login_attempts] = []
     redirect('/')
   end
 end
