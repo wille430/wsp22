@@ -1,18 +1,22 @@
 main.login
     section
         h2 Signup
-        form.loginForm  action="/users/new" method="post" 
+        form.loginForm  action="/users" method="post" 
             label for="usernameField" Username
             input#usernameField.textInput type="text" name="username"/
 
             - if params[:username] === "not-unique"
                 span.error-msg Username is already in use
+            - else params[:username] === "too-short"
+                span.error-msg The username must be atleast 4 characters long
             
             label for="passwordField" Password
             input#passwordField.textInput type="password" name="password"/
 
             - if params[:password] === "not-matching"
                 span.error-msg Passwords must match
+            - else params[:password] === "too-weak"
+                span.error-msg Password must atleast be 8 characters long and contain both letters and digits
 
             label for="passwordConfirmField" Password Confirm
             input#passwordConfirmField.textInput type="password" name="confirm_password"/

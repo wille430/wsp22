@@ -48,12 +48,36 @@
             section.chat
                 ul.message-list#msgs
                     - messages.each do |message|
-                        li.message id="#{message["id"]}"
+                        li.message id="m#{message["id"]}"
                             span.message-user #{message["username"]}
                             span.message-text #{message["message"]}
+                            form.edit-text-box.hide action="/groups/#{group["id"]}/messages/#{message["id"]}/update" method="post"
+                                input type="text" name="new_message" value="#{message["message"]}"
+                                input type="submit" value="Edit"/
                             - if session[:user_id] == message["user_id"] || group["creator"] == session[:user_id]
                                 form.message-delete action="/groups/#{group["id"]}/messages/#{message["id"]}/destroy" method="post"   
                                     input type="submit" value="Delete"
+                            - if session[:user_id] == message["user_id"]
+                                button onClick="beginEditMessage(#{message["id"]})" Edit
+                            
+                            javascript: 
+                                const beginEditMessage = (messageId) => {
+                                    const textBox = document.querySelector("#m" + messageId + " > span.message-text")
+                                    const editBox = document.querySelector("#m" + messageId + " > .edit-text-box")
+                                    textBox.classList.add("hide")
+                                    editBox.classList.remove("hide")
+
+                                    console.log("Begining to edit")
+                                }
+                                const stopEditMessage = (messageId) => {
+                                    const textBox = document.querySelector("#m" + messageId + " > span.message-text")
+                                    const editBox = document.querySelector("#m" + messageId + " > .edit-text-box")
+                                    textBox.classList.remove("hide")
+                                    editBox.classList.add("hide")
+
+                                    console.log("Stopping edit")
+                                }
+
             section.chat-input
                 form#messageForm action="/groups/#{group["id"]}/messages" method="post" 
                     input type="text" name="message" placeholder="Send a message..."

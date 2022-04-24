@@ -252,6 +252,14 @@ main {
   grid-area: txt;
 }
 
+.edit-text-box {
+  grid-area: txt;
+}
+
+.hide {
+  display: none;
+}
+
 .message-delete {
   grid-area: del;
 }

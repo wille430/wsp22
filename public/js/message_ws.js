@@ -4,7 +4,7 @@ const setup_ws = () => {
       const messageEles = el.children;
 
       for (var i = 0; i < messageEles.length; i++) {
-        if (messageEles[i].id == msg["id"]) {
+        if (messageEles[i].id.slice(1) == msg["id"]) {
           console.log("Removing", messageEles[i]);
           messageEles[i].remove();
         }
@@ -14,7 +14,7 @@ const setup_ws = () => {
       el.innerHTML =
         el.innerHTML +
         `
-        <li class="message" id="${msg["id"]}">
+        <li class="message" id="m${msg["id"]}">
             <span class="message-user">${msg["username"]}</span>
             <span class="message-text">${msg["msg"]}</span>
         </li>

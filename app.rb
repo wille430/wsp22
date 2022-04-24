@@ -19,7 +19,7 @@ set :sockets, []
 public_routes = [
   '/login',
   '/signup',
-  '/users/new'
+  '/users'
 ]
 
 MAX_LOGIN_ATTEMPTS = 5
@@ -140,7 +140,7 @@ end
 # @param [String] confirm_password, Password confirmation. Should equal password for successful request
 #
 # @see Model#register_user
-post('/users/new') do
+post('/users') do
   username = params[:username]
   password = params[:password]
   confirm_password = params[:confirm_password]
@@ -299,7 +299,7 @@ post('/groups/:group_id/messages') do
   redirect("/groups/#{group_id}")
 end
 
-# TODO: Update a message in a group
+# Update a message in a group
 #
 # @param [Integer] :group_id, The ID of the group
 # @param [Integer] :message_id, The ID of the message
@@ -310,10 +310,10 @@ post('/groups/{group_id}/messages/{message_id}/update') do
   group_id = params[:group_id]
   message_id = params[:message_id]
   new_message = params[:new_message]
-  user_id = session[:user_id]
 
-  # TODO
+  update_message(message_id, new_message)
 
+  redirect("/groups/#{group_id}")
 end
 
 # Delete a message in a group and redirect to '/groups:group_id' or display error

@@ -130,6 +130,34 @@ module Model
              }
     end
 
+    if (username.length < 4)
+      return {
+               error: true,
+               validation_errors: [
+                 {
+                   param: 'username',
+                   errors: [
+                     'too-short'
+                   ]
+                 }
+               ]
+             }
+    end
+
+    if (password.length < 8 && !(password.match(/\w+/) && password.match(/\d+/)))
+      return {
+               error: true,
+               validation_errors: [
+                 {
+                   param: 'password',
+                   errors: [
+                     'too-weak'
+                   ]
+                 }
+               ]
+             }
+    end
+
     db = connect_db()
 
     # check for existing users
@@ -657,5 +685,19 @@ module Model
     group = get_group_by_id(group_id)
 
     return group['creator'] == user_id
+  end
+
+  # Update a message
+  #
+  # @param [Integer] message_id The ID of the message
+  # @param [String] new_message The new message
+  #
+  # @return [nil]
+  def update_message(message_id, new_message)
+    db = connect_db()
+
+    db.execute('UPDATE messages SET message = ? WHERE id = ?', new_message, message_id)
+
+    return nil
   end
 end
