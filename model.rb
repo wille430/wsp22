@@ -633,8 +633,12 @@ module Model
                                 AND users.id = ?
                                 ', group_id, user_id).first
 
+    puts('CURRENT:', current_role_id)
+
     if (current_role_id)
+      current_role_id = current_role_id['group_role_id']
       if !role_id
+
         # update role_id
         db.execute('UPDATE users_group_roles
                   SET group_role_id = ?
