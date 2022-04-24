@@ -28,7 +28,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 button,
@@ -63,6 +63,7 @@ main {
   width: 100%;
   flex-grow: 1;
   background-color: var(--primary-light);
+  color: white;
 }
 
 .group-header {
