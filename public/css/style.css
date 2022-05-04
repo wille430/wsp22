@@ -1,7 +1,7 @@
 :root {
   --primary-lightest: rgb(147, 156, 166);
   --primary-light: rgb(109, 118, 129);
-  --primary: rgb(61, 68, 78);
+  /* --primary: rgb(61, 68, 78); */
   --primary-dark: rgb(48, 50, 53);
   --primary-darkest: rgb(33, 34, 36);
 
@@ -26,24 +26,6 @@ ul {
   list-style-type: none;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-}
-
-button,
-input[type="submit"] {
-  border: none;
-  padding: 0.25rem 0.25rem;
-  border-radius: 2rem;
-  background-color: white;
-}
-
-button:hover,
-input[type="submit"]:hover {
-  cursor: pointer;
-}
-
 .layout {
   display: grid;
   grid-template:
@@ -62,13 +44,13 @@ main {
   grid-area: main;
   width: 100%;
   flex-grow: 1;
-  background-color: var(--primary-light);
+  background-color: var(--gray-dark);
   color: white;
 }
 
 .group-header {
   grid-area: head;
-  background-color: var(--primary);
+  background-color: var(--secondary-dark) !important;
   display: flex;
   align-items: center;
   padding-left: 1rem;
@@ -77,7 +59,9 @@ main {
 .members-nav {
   grid-area: mbnv;
   padding: 0.5rem;
-  background-color: var(--primary);
+  background-color: var(--secondary-dark);
+  display: flex;
+  flex-direction: column;
 }
 
 .group-chat-section {
@@ -88,6 +72,7 @@ main {
     "ctin" auto
     / 100%;
   height: 100%;
+  background-color: var(--secondary);
 }
 
 .chat {
@@ -107,7 +92,7 @@ main {
 .chat-input {
   grid-area: ctin;
   height: 3.5rem;
-  background-color: var(--primary);
+  background-color: var(--secondary-dark);
   padding: 0.25rem;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
@@ -134,7 +119,7 @@ main {
 
 .groups-nav {
   grid-area: gpnv;
-  background-color: var(--primary);
+  background-color: var(--secondary-dark);
   padding: 0.5rem;
   color: white !important;
 }
@@ -151,16 +136,14 @@ main {
 }
 
 .group-index-card {
-  background-color: var(--primary-lightest);
+  background-color: var(--secondary);
   margin: 0 auto;
   width: 100%;
   max-width: 24rem;
-  border-radius: 1rem;
+  border-radius: var(--border-radius);
   padding: 0.5rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
-  grid-row-gap: 0.5rem;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 0.75rem;
 }
 
@@ -461,4 +444,17 @@ main {
   100% {
     left: -100vw;
   }
+}
+
+.container-sm {
+  max-width: var(--breakpoint-sm) !important;
+}
+
+.container-md {
+  max-width: var(--breakpoint-md) !important;
+}
+
+.link {
+  all: unset;
+  cursor: pointer;
 }

@@ -1,23 +1,26 @@
 main.login
     section
         h2 Login
-        form.loginForm action="/login" method="post"
-            label for="usernameField" Username
-            input#usernameField.textInput  type="text" name="username"/
+        form action="/login" method="post"
+            .form-group
+                label for="usernameField" Username
+                input#usernameField.form-control  type="text" name="username"/
 
-            - if params[:error] === "invalid"
-                span.error-msg Wrong username or password
+                - if params[:error] === "invalid"
+                    span.error-msg Wrong username or password
 
-            label for="passwordField" Password
-            input#passwordField.textInput type="password" name="password"/
+            .form-group
+                label for="passwordField" Password
+                input#passwordField.form-control type="password" name="password"/
 
-            - if params[:error] === "invalid"
-                span.error-msg Wrong username or password
+                - if params[:error] === "invalid"
+                    span.error-msg Wrong username or password
 
-            input type="submit" value="Login"/
+            input.btn.btn-primary type="submit" value="Login"/
 
+            .form-group
+                - if params[:error] === "timeout"
+                    span.error-msg You have made too many login attempts recently. Please retry in a few minutes.
 
-            - if params[:error] === "timeout"
-                span.error-msg You have made too many login attempts recently. Please retry in a few minutes.
-
-            a href="/signup" Create a new account 
+            .form-group
+                a href="/signup" Create a new account 

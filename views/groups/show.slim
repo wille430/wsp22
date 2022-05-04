@@ -11,7 +11,7 @@
 
         aside.members-nav
             h3 Members
-            ul
+            ul.mb-0
                 - if members 
                     - i = 0
                     - members.each do |member|
@@ -19,20 +19,17 @@
                             - role_of_member = role(member["group_role_id"])
                             div.cardHeader
                                 span #{member["username"]}
-                                button.toggleMemberOptionsButton onClick='show(#{i})'
-                                    span ...
-                                ul.memberOptions style='display:none;'
-                                    - if current_user_can_kick(member["id"], group["id"])
-                                        li
-                                            form action="/groups/#{group["id"]}/members/#{member["id"]}/destroy" method="post" 
-                                                    input type="submit" value="Kick"/
+
+                                .btn-group
+                                    btn.btn.btn-secondary.btn-sm.dropdown-toggle#dropdownMenuButton data-toggle="dropdown"
+                                    .dropdown-menu
+                                        - if current_user_can_kick(member["id"], group["id"])
+                                            form.dropdown-item action="/groups/#{group["id"]}/members/#{member["id"]}/destroy" method="post" 
+                                                    input.link type="submit" value="Kick"/
                                                     input type="hidden" name="redirect" value="/groups/#{group["id"]}"/
-                                    
-                                    - if session[:user_id] == group["creator"]
-                                        li
-                                            form action="/groups/#{group["id"]}/members/edit" method="get" 
-                                                input type="submit" value="Assign Role"/
-            
+                                        - if session[:user_id] == group["creator"]
+                                            form.dropdown-item action="/groups/#{group["id"]}/members/edit" method="get" 
+                                                input.link type="submit" value="Assign Role"/
                             - isGroupOwner = member["id"] == group["creator"]
                             - if role_of_member && !isGroupOwner
                                 span #{role_of_member["title"]}
@@ -40,7 +37,9 @@
                                 span Group Owner
                         - i += 1
             - if group["creator"] == session[:user_id]
-                a href="/groups/#{group["id"]}/members/edit" +
+                a.mx-auto.text-sm href="/groups/#{group["id"]}/members/edit"
+                    span +
+                    span.text-muted.ml-2 Add
 
         main.group-chat-section
             header.group-header 
@@ -81,7 +80,7 @@
             section.chat-input
                 form#messageForm action="/groups/#{group["id"]}/messages" method="post" 
                     input type="text" name="message" placeholder="Send a message..."
-                    input type="submit" value="Send"
+                    input.btn.btn-primary type="submit" value="Send"
         javascript: 
             let memberOptionsArray = document.querySelectorAll(".memberOptions")
             function show(index) {

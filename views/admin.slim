@@ -1,18 +1,25 @@
 == slim :layout
-    / TODO: styla
-    nav.adminSideNav
+    div.d-flex.h-full style="min-height: 100vh"
+        / TODO: styla
+        nav.adminSideNav
 
-        a href="/groups/#{params[:group_id]}" << Back to group
+            a href="/groups/#{params[:group_id]}" << Back to group
 
-        h4 Group Roles
-        ul 
-            li 
-                a href="/groups/#{params[:group_id]}/roles" All roles
-            li
-                a href="/groups/#{params[:group_id]}/roles/new" Create a new role
-        h4 Members
-        ul
-            li 
-                a href="/groups/#{params[:group_id]}/members/edit" Edit members
-    main
-        == yield
+            h4 Group Roles
+            ul 
+                li 
+                    a href="/groups/#{params[:group_id]}/roles" All roles
+                li
+                    a href="/groups/#{params[:group_id]}/roles/new" Create a new role
+            h4 Members
+            ul
+                li 
+                    a href="/groups/#{params[:group_id]}/members/edit" Edit members
+        main.flex-grow
+            ol.breadcrumb.bg-secondary
+                li.breadcrumb-item
+                    a href="/" All 
+                li.breadcrumb-item
+                    a href="/groups/#{params[:group_id]}" #{group["name"]}
+            .d-flex
+                == yield

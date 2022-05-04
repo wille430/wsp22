@@ -229,7 +229,7 @@ end
 post('/groups/:group_id/update') do
   group_id = params[:group_id]
   user_id = session[:user_id]
-  title = params[:title]
+  title = params[:name]
 
   update_group(group_id, title)
 

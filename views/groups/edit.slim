@@ -1,7 +1,12 @@
 == slim :"logged-in-layout"
-    section 
-        h3 Update #{group["title"]} 
+    section.container.container-sm.my-auto
+        a href="/" << Back
+        h3 
+            | Update
+            span.font-italic.text-primary.ml-2 #{group["name"]} 
         form action="/groups/#{params[:group_id]}/update" method="post" 
-            label Group Name
-            input type="text" name="name"/
-            input type="submit" value="Update"/
+            .form-group
+                label Group Name
+                input.form-control type="text" name="name" value="#{group["name"]}"/
+            .form-group
+                input.btn.btn-primary type="submit" value="Update"/

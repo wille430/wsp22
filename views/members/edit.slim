@@ -1,24 +1,27 @@
 == slim :admin
-    section.add-member-section
-        h3 Add member
-        form action="/groups/#{params[:group_id]}/members" method="post" 
-            input type="text" name="new_member_username"
-            input type="submit" value="Add"/
+    div.container-fluid.row.mx-auto.container-md.mt-5
+        section.col
+            h3 Add member
+            form.d-flex action="/groups/#{params[:group_id]}/members" method="post" 
+                .btn-group
+                    input.form-control.rounded-0.rounded-left type="text" name="new_member_username" placeholder="Username"
+                    input.btn.btn-primary type="submit" value="Add"/
 
-    section.edit-role-section
-        h3 Members
-        ul 
-            - members.each do |member|
-                li
-                    span #{member["username"]}
-                    form action="/groups/#{params[:group_id]}/members/#{member["id"]}/role/update" method="post"
-                        select#role name="role_id"
-                            option value="" No Role
-                            - group_roles.each do |group_role|
-                                - if member["group_role_id"] === group_role["id"]
-                                    option selected="selected" value="#{group_role["id"]}" #{group_role["title"]}
-                                - else
-                                    option value="#{group_role["id"]}" #{group_role["title"]}
-                        input type="submit" value="Assign"
-                    form action="/groups/#{params[:group_id]}/members/#{member["id"]}/destroy" method="post"
-                        input type="submit" value="Kick"/
+        section.col-auto
+            h3 Members
+            ul 
+                - members.each do |member|
+                    li.row
+                        span.col-4 #{member["username"]}
+                        .btn-group.col-auto
+                            form.d-flex action="/groups/#{params[:group_id]}/members/#{member["id"]}/role/update" method="post"
+                                select.btn.btn-sm.rounded-0#role name="role_id"
+                                    option value="" No Role
+                                    - group_roles.each do |group_role|
+                                        - if member["group_role_id"] === group_role["id"]
+                                            option selected="selected" value="#{group_role["id"]}" #{group_role["title"]}
+                                        - else
+                                            option value="#{group_role["id"]}" #{group_role["title"]}
+                                input.btn.btn-sm.rounded-0 type="submit" value="Assign"
+                            form.btn.btn-secondary.btn-sm action="/groups/#{params[:group_id]}/members/#{member["id"]}/destroy" method="post"
+                                input.link type="submit" value="Kick"/
