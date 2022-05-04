@@ -21,5 +21,14 @@
                     a href="/" All 
                 li.breadcrumb-item
                     a href="/groups/#{params[:group_id]}" #{group["name"]}
+                - if request.path_info.match(/(\/roles)/)
+                    li.breadcrumb-item 
+                        a href="/groups/#{params[:group_id]}/roles" Roles
+                - if request.path_info.match(/(\/roles\/\d+\/edit)$/)
+                    li.breadcrumb-item 
+                        a href="/groups/#{params[:group_id]}/roles/#{params[:role_id]}/edit" Edit
+                - if request.path_info.match(/(\/members)/)
+                    li.breadcrumb-item 
+                        a href="/groups/#{params[:group_id]}/members/edit" Members
             .d-flex
                 == yield

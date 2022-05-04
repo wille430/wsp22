@@ -1,12 +1,17 @@
 == slim :admin
-    / TODO: create a new role
-    form action="/groups/#{params[:group_id]}/roles" method="post"
-        input#title type="text" name="title" placeholder="Role Title"
+    section.container.container-sm
+        h4 Create a new role
+        form action="/groups/#{params[:group_id]}/roles" method="post"
+            .form-group
+                label for="title" Role name
+                input#title.form-control type="text" name="title"
 
-        input#canDelete type="checkbox" name="can_delete" 
-        label for="canDelete" Can Delete
+            .form-check
+                input#canDelete.form-check-input type="checkbox" name="can_delete" 
+                label.form-check-label for="canDelete" Can Delete
 
-        input#canKick type="checkbox" name="can_kick" 
-        label for="canKick" Can Kick
+            .form-check.mb-2
+                input#canKick.form-check-input type="checkbox" name="can_kick" 
+                label.form-check-label for="canKick" Can Kick
 
-        input type="submit" value="Create Role"
+            input.btn.btn-primary type="submit" value="Create Role"

@@ -1,20 +1,25 @@
 == slim :admin
     - current_role = role()
-    form action="/groups/#{params[:group_id]}/roles/#{params[:role_id]}/update" method="post"
-        label New Role Name
-        input type="text" name="title" value="#{current_role["title"]}"
-
-        - if current_role["canDelete"] === "on"
-            input#canDelete type="checkbox" name="can_delete" checked="checked"
-        - else 
-            input#canDelete type="checkbox" name="can_delete"
-        label for="canDelete" Can Delete
+    section.container.container-sm
+        h4 Edit #{current_role["title"]} role
+        form action="/groups/#{params[:group_id]}/roles/#{params[:role_id]}/update" method="post"
+            .form-group
+                label for="title" Role name
+                input#title.form-control type="text" name="title" value="#{current_role["title"]}"
 
 
-        - if current_role["canKick"] === "on"
-            input#canKick type="checkbox" name="can_kick" checked="checked"
-        - else 
-            input#canKick type="checkbox" name="can_kick"
-        label for="canKick" Can Kick
+            .form-check
+                - if current_role["canDelete"] === "on"
+                    input#canDelete.form-check-input type="checkbox" name="can_delete" checked="checked"
+                - else 
+                    input#canDelete.form-check-input type="checkbox" name="can_delete" 
+                label.form-check-label for="canDelete" Can Delete
 
-        input type="submit" value="Update"
+            .form-check.mb-2
+                - if current_role["canKick"] === "on"
+                    input#canKick.form-check-input type="checkbox" name="can_kick" checked="checked"
+                - else
+                    input#canKick.form-check-input type="checkbox" name="can_kick" 
+                label.form-check-label for="canKick" Can Kick
+
+            input.btn.btn-primary type="submit" value="Update"

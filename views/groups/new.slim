@@ -1,7 +1,8 @@
 == slim :"logged-in-layout"
-    section 
+    section.container.container-sm.mt-5
         h3 Create a group 
         form action="/groups" method="post" 
-            label Group Name
-            input type="text" name="name"/
-            input type="submit" value="Create"/
+            .form-group
+                label Group Name
+                input.form-control type="text" name="name"/
+            input.btn.btn-primary type="submit" value="Create"/

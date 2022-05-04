@@ -213,13 +213,9 @@ main {
 }
 
 .message {
-  display: grid;
-  grid-template-columns: auto 3.5rem;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "usr del"
-    "txt .";
-  background-color: var(--primary);
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: var(--secondary-dark);
   border-radius: var(--border-radius);
   color: white;
   padding: 0.5rem;
@@ -233,6 +229,7 @@ main {
 
 .message-text {
   grid-area: txt;
+  word-break: break-all;
 }
 
 .edit-text-box {
@@ -240,7 +237,7 @@ main {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .message-delete {

@@ -8,7 +8,7 @@ main.login
 
                 - if params[:username] === "not-unique"
                     span.error-msg Username is already in use
-                - else params[:username] === "too-short"
+                - elsif params[:username] === "too-short"
                     span.error-msg The username must be atleast 4 characters long
                 
             .form-group
@@ -17,7 +17,7 @@ main.login
 
                 - if params[:password] === "not-matching"
                     span.error-msg Passwords must match
-                - else params[:password] === "too-weak"
+                - elsif params[:password] === "too-weak"
                     span.error-msg Password must atleast be 8 characters long and contain both letters and digits
 
             .form-group
