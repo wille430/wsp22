@@ -11,7 +11,7 @@
             h3 Members
             ul 
                 - members.each do |member|
-                    li.row
+                    li.row.mb-2
                         span.col-4 #{member["username"]}
                         .btn-group.col-auto
                             form.d-flex action="/groups/#{params[:group_id]}/members/#{member["id"]}/role/update" method="post"
