@@ -27,10 +27,11 @@ ul {
 }
 
 .layout {
+  flex: none;
   display: grid;
   grid-template:
     "gpnv main mbnv" 100%
-    / 12rem 1fr 12rem;
+    / 14rem 1fr 14rem;
   width: 100%;
   height: 100%;
 }
@@ -147,6 +148,22 @@ main {
   margin-bottom: 0.75rem;
 }
 
+.group-index-card .group-name {
+  flex-grow: 1;
+  margin-left: 0.75rem;
+}
+
+.color-gap {
+  display: block;
+  width: 0.5rem;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+  border-radius: var(--border-radius);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .chat-button {
   text-align: right;
 }
@@ -164,7 +181,6 @@ main {
   background-color: var(--secondary);
   margin-bottom: 0.5rem;
   border-radius: var(--border-radius);
-  color: white;
 }
 
 .member-card {
@@ -192,18 +208,18 @@ main {
   color: aliceblue;
 }
 
-.group-card a {
-  color: white;
-}
-
-.group-card::before {
-  content: "";
+.group-icon {
   display: block;
   height: 2rem;
   width: 2rem;
   background-color: attr(data-color color, var(--primary-lightest));
   border-radius: 100%;
   margin-right: 0.5rem;
+  flex: none;
+}
+
+.group-card > a {
+  flex-grow: 1;
 }
 
 .message-list {
@@ -420,7 +436,7 @@ main {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  background-color: var(--primary-light);
+  background-color: var(--primary);
   padding: 0.5rem;
   border-radius: var(--border-radius);
   animation-name: slide-out;
@@ -454,4 +470,21 @@ main {
 .link {
   all: unset;
   cursor: pointer;
+}
+
+.color-input {
+  display: block;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  outline: none;
+  opacity: 0;
+}
+
+.color-input-wrapper {
+  background-color: black;
+  height: 2rem;
+  width: 2rem;
+  display: inline-block;
+  border-radius: var(--border-radius);
 }

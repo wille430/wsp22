@@ -6,4 +6,15 @@
             .form-group
                 label Group Name
                 input.form-control type="text" name="name"/
+            .form-group.d-flex.align-items-center
+                label.mb-0.mr-2 for="color-input" Color 
+                .color-input-wrapper 
+                    input.color-input#color-input type="color" name="color" value="#939ca6"/
             input.btn.btn-primary type="submit" value="Create"/
+    
+    javascript: 
+        $('.color-input-wrapper').css({'background-color': "#939ca6"})
+
+        $(document).on('change', 'input[type=color]', function() {
+            this.parentNode.style.backgroundColor = this.value;
+        });

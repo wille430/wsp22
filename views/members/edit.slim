@@ -2,12 +2,12 @@
     div.container-fluid.row.mx-auto.container-md.mt-5
         section.col
             h3 Add member
-            form.d-flex action="/groups/#{params[:group_id]}/members" method="post" 
-                .btn-group
-                    input.form-control.rounded-0.rounded-left type="text" name="new_member_username" placeholder="Username"
-                    input.btn.btn-primary type="submit" value="Add"/
+            form.input-group action="/groups/#{params[:group_id]}/members" method="post" 
+                    input.form-control type="text" name="new_member_username" placeholder="Username"
+                    .input-group-append
+                        input.btn.btn-primary type="submit" value="Add"/
 
-        section.col-auto
+        section.col-6
             h3 Members
             ul 
                 - members.each do |member|

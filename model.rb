@@ -199,13 +199,19 @@ module Model
   #
   # @param [Integer] user_id The id of the user creator
   # @param [String] group_name The name of the group
+  # @param [String] color The group color
   #
   # @return [nil]
-  def create_group(user_id, group_name)
+  def create_group(user_id, group_name, color = nil)
     db = connect_db()
 
     # create group
-    db.execute('INSERT INTO chat_groups (name, creator) VALUES (?, ?)', group_name, user_id)
+    if color
+      db.execute('INSERT INTO chat_groups (name, creator, color) VALUES (?, ?, ?)', group_name, user_id, color)
+    else
+      db.execute('INSERT INTO chat_groups (name, creator) VALUES (?, ?)', group_name, user_id)
+    end
+
     group_id = db.last_insert_row_id
 
     add_member_to_group(group_id, user_id)
@@ -231,15 +237,23 @@ module Model
   #
   # @param [Integer] group_id The id of the group
   # @param [String] name The new name of the group
+  # @param [String] color The new color of the group
   #
   # @return [nil]
-  def update_group(group_id, name)
+  def update_group(group_id, name, color = nil)
     db = connect_db()
 
-    db.execute('UPDATE
+    if color
+      db.execute('UPDATE
+                  chat_groups
+                SET name = ?, color = ?
+                WHERE id = ?', name, color, group_id)
+    else
+      db.execute('UPDATE
                   chat_groups
                 SET name = ?
                 WHERE id = ?', name, group_id)
+    end
   end
 
   # Delete group by id

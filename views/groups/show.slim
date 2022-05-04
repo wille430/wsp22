@@ -5,8 +5,18 @@
             ul
                 - if groups
                     - groups.each do |group|
-                        li.group-card data-color="#{group["color"]}"
-                            a href="/groups/#{group["id"]}" #{group["name"]}
+                        li.group-card
+                            .group-icon style="background-color: #{group["color"]};"
+                            a.text-white href="/groups/#{group["id"]}" #{group["name"]}
+                            .btn-group
+                                button.btn.btn-secondary.btn-sm.dropdown-toggle data-toggle="dropdown"
+                                .dropdown-menu
+                                    - if session[:user_id] === group["creator"]
+                                        a.dropdown-item href="/groups/#{group["id"]}/members/edit" Members
+                                        a.dropdown-item href="/groups/#{group["id"]}/edit" Edit
+                                    - else 
+                                        form.dropdown-item action="/groups/#{group["id"]}/members/#{session[:user_id]}/destroy" method="post" 
+                                            input.link type="submit" value="Leave"/
             a href="/groups/new" + Create group
 
         aside.members-nav
@@ -22,7 +32,7 @@
 
                                 - if current_user_can_kick(member["id"], group["id"]) || session[:user_id] == group["creator"]
                                     .btn-group
-                                        btn.btn.btn-secondary.btn-sm.dropdown-toggle#dropdownMenuButton data-toggle="dropdown"
+                                        button.btn.btn-secondary.btn-sm.dropdown-toggle#dropdownMenuButton data-toggle="dropdown"
                                         .dropdown-menu
                                             - if current_user_can_kick(member["id"], group["id"])
                                                 form.dropdown-item action="/groups/#{group["id"]}/members/#{member["id"]}/destroy" method="post" 

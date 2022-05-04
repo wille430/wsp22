@@ -4,6 +4,7 @@
         ul.group-index-list
         - groups.each do |group|
                 div.group-index-card
+                    .color-gap style="background-color:#{group["color"]}"
                     span.group-name #{group["name"]}
                     .btn-group
                         - if session[:user_id] == group["creator"] 

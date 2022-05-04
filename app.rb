@@ -39,10 +39,23 @@ before /(\/groups\/)\d+/ do
 
   if (!user_exists_in_group(group_id, user_id))
     redirect('/login?error=not-a-member')
+  else
+    pass
   end
 end
 
-before /(\/groups\/)\w+(\/(roles|members|edit|update|destroy))(\/\w+)?/ do
+before /(\/groups\/)\d+(\/members\/)\d+\/destroy/ do
+  member_id = request.path_info[/(?<=\/members\/)(\d+)/].to_i
+  group_id = request.path_info[/(?<=\/groups\/)(\d+)/].to_i
+  user_id = session[:user_id]
+
+  # user can only kick itself
+  if !(member_id == user_id || user_is_owner_of_group(group_id, user_id))
+    redirect("/groups/#{group_id}?error=access-denied")
+  end
+end
+
+before /(\/groups\/)\d+(\/(roles|members|edit|update|destroy))(\/(?!\d+\/destroy).*)?/ do
   group_id = request.path_info[/(?<=\/groups\/)(\d+)/]
   user_id = session[:user_id]
 
@@ -181,9 +194,10 @@ end
 # @see Model#create_group
 post('/groups') do
   group_name = params[:name]
+  color = params[:color]
   user_id = session[:user_id]
 
-  create_group(user_id, group_name)
+  create_group(user_id, group_name, color)
 
   redirect('/')
 end
@@ -228,10 +242,11 @@ end
 # @see Model#update_group
 post('/groups/:group_id/update') do
   group_id = params[:group_id]
+  color = params[:color]
   user_id = session[:user_id]
   title = params[:name]
 
-  update_group(group_id, title)
+  update_group(group_id, title, color)
 
   redirect("/groups/#{group_id}")
 end
