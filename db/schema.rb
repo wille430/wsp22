@@ -11,36 +11,37 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 0) do
-  create_table "chat_groups", force: :cascade do |t|
-    t.text "name", null: false
-    t.integer "creator", null: false
+  create_table 'chat_groups', force: :cascade do |t|
+    t.text 'name', null: false
+    t.integer 'creator', null: false
+    t.text 'color', null: false, default: '#939ca6'
   end
 
-  create_table "group_roles", force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.text "title", null: false
-    t.integer "canDelete", default: 0
-    t.integer "canKick", default: 0
+  create_table 'group_roles', force: :cascade do |t|
+    t.integer 'group_id', null: false
+    t.text 'title', null: false
+    t.integer 'canDelete', default: 0
+    t.integer 'canKick', default: 0
   end
 
-  create_table "groups_users", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
+  create_table 'groups_users', force: :cascade do |t|
+    t.integer 'user_id', null: false
+    t.integer 'group_id', null: false
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text "message"
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
+  create_table 'messages', force: :cascade do |t|
+    t.text 'message'
+    t.integer 'group_id', null: false
+    t.integer 'user_id', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.text "username", null: false
-    t.integer "pwd_digest"
+  create_table 'users', force: :cascade do |t|
+    t.text 'username', null: false
+    t.integer 'pwd_digest'
   end
 
-  create_table "users_group_roles", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "group_role_id", null: false
+  create_table 'users_group_roles', force: :cascade do |t|
+    t.integer 'user_id', null: false
+    t.integer 'group_role_id', null: false
   end
 end
