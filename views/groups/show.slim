@@ -5,7 +5,7 @@
             ul
                 - if groups
                     - groups.each do |group|
-                        li.group-card
+                        li.group-card data-color="#{group["color"]}"
                             a href="/groups/#{group["id"]}" #{group["name"]}
             a href="/groups/new" + Create group
 
