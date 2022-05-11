@@ -40,16 +40,17 @@ module Model
     return db.execute('SELECT * FROM users WHERE username = ?', username).first
   end
 
-  # Validate user credentials and set user_id to session
+  # Validate user credentials and return user_id or return error if credentials were invalid
   #
   # @param [String] username Username
   # @param [String] password Password
   #
-  # @return [Hash]
+  # @return [Hash] if an error occurred
   #   * :error [Boolean] Whether or not an error occured
   #   * :validation_errors [Array<Hash>] An array of errors
   #     * :param [String] Name of the parameter
   #     * :errors [Array<String>] An array of error codes
+  # @return [Integer] The id of the user if credentials were valid
   def login_user(username, password)
     db = connect_db()
 
@@ -62,7 +63,7 @@ module Model
 
       if BCrypt::Password.new(pwd_digest) == password
         # login user
-        session[:user_id] = user['id']
+        return user['id']
       else
         return {
                  error: true,
@@ -96,7 +97,7 @@ module Model
            }
   end
 
-  # Create a user from username and password and store user_id in session
+  # Create a user from username and password and return the ID of the user or return error when validation failed
   #
   # @param [String] username Username
   # @param [String] password Password
@@ -107,6 +108,7 @@ module Model
   #   * :validation_errors [Array<Hash>] An array of errors
   #     * :param [String] Name of the parameter
   #     * :errors [Array<String>] An array of error codes
+  # @return [Integer] ID of the user if function args were valid
   def register_user(username, password, confirm_password)
     # validate password
     if !(password == confirm_password)
@@ -186,13 +188,7 @@ module Model
     # get id of new user
     new_user = db.execute('SELECT id FROM users WHERE username = ?', username).first
 
-    # save user_id in session
-    session[:user_id] = new_user['id']
-
-    return {
-             error: false,
-             validation_errors: []
-           }
+    return new_user['id']
   end
 
   # Create a chat group
@@ -366,7 +362,6 @@ module Model
   #   * :pwd_digest [String] The hashed password
   def get_groups_of_user(user_id)
     db = connect_db()
-    user_id = session[:user_id]
 
     if (!user_id)
       # return empty if not logged in

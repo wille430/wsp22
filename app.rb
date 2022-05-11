@@ -110,7 +110,7 @@ post('/login') do
   username = params[:username]
   password = params[:password]
 
-  errors = login_user(username, password)
+  user_id = login_user(username, password)
 
   if (session[:login_attempts].kind_of?(Array))
     # filter out old login attempts
@@ -123,13 +123,14 @@ post('/login') do
     redirect('/login?error=timeout')
   end
 
-  if errors[:error]
+  if user_id.instance_of? Integer
+    session[:user_id] = user_id
+    session[:login_attempts] = []
+    redirect('/')
+  else
     session[:login_attempts] = session[:login_attempts] << Time.now.to_i
 
     redirect('/login?error=invalid')
-  else
-    session[:login_attempts] = []
-    redirect('/')
   end
 end
 
@@ -158,9 +159,13 @@ post('/users') do
   password = params[:password]
   confirm_password = params[:confirm_password]
 
-  errors = register_user(username, password, confirm_password)
+  user_id = register_user(username, password, confirm_password)
 
-  if errors[:error]
+  if user_id.instance_of? Integer
+    session[:user_id] = user_id
+    redirect('/')
+  else
+    errors = user_id
     redirect_url = '/signup?'
 
     errors[:validation_errors].each do |error|
@@ -170,8 +175,6 @@ post('/users') do
     end
 
     redirect(redirect_url[0...-1])
-  else
-    redirect('/')
   end
 end
 
